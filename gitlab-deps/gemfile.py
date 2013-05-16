@@ -74,19 +74,19 @@ def statistics(gitlab_gemlist, fedora_gemlist):
 def main():
     #subprocess.call(['rubysearch.sh'], cwd='/home/axil/tools/fedora-gitlab/')
     gitlab_gems = gitlab_gems_list()
-    fedora_gems_file = '/home/axil/tools/fedora-gitlab/rubygems_fedora'
+    fedora_gems_file = '/home/axil/tools/fedora/gitlab-deps/rubygems_fedora'
     fedora_gems = fedora_gems_list(fedora_gems_file)
     common = common_gems(gitlab_gems, fedora_gems)
     missing = find_missing(gitlab_gems, fedora_gems)
 
     #to_file = raw_input('Save Gitlab\'s deps as: ')
-    to_file = '/home/axil/tools/fedora-gitlab/rubygems_gitlab'
+    to_file = '/home/axil/tools/fedora/gitlab-deps/rubygems_gitlab'
     f = open(to_file, 'w')
     for rubygem in gitlab_gems:  
         f.write(rubygem + '\n')
     f.close()
     
-    missing_gems = '/home/axil/tools/fedora-gitlab/rubygems_missing'
+    missing_gems = '/home/axil/tools/fedora/gitlab-deps/rubygems_missing'
     f = open(missing_gems, 'w')
     for rubygem in missing:  
         f.write(rubygem + '\n')

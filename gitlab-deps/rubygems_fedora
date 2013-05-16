@@ -54,10 +54,8 @@ activemodel
 activerecord
 activeresource
 activesupport
-acts-as-list
 addressable
-aeolus-cli
-aeolus-image
+afm
 allison
 amazon-ec2
 ammeter
@@ -72,6 +70,7 @@ atk
 audited
 audited-activerecord
 authlogic
+awesome_print
 aws
 aws-sdk
 bacon
@@ -114,15 +113,16 @@ daemons
 database_cleaner
 declarative_authorization
 delayed_job
+delayed_job_active_record
 delorean
 deltacloud-client
 diff-lcs
 ditz
 dnsruby
-dynamic_form
 dynect_rest
 erubis
 escape
+ethon
 eventmachine
 excon
 execjs
@@ -250,6 +250,7 @@ passenger-devel
 passenger-native
 passenger-native-libs
 pathname2
+pdf-inspector
 pdf-reader
 pervasives
 pg
@@ -261,10 +262,12 @@ poppler
 pr_geohash
 progressbar
 pry
+psych
 puppet-lint
 qpid
 qpid_messaging
 qpid_proton
+rabl
 rack
 rack-accept
 rack-cache
@@ -276,6 +279,7 @@ rack-test
 rails
 rails_warden
 railties
+rainbow
 raindrops
 rake
 rake-compiler
@@ -293,7 +297,10 @@ restr
 reststop
 rhc
 right_aws
+riot
 rmail
+robotex
+ronn
 rr
 rsolr
 rspec
@@ -345,6 +352,7 @@ sshkey
 state_machine
 stomp
 sup
+syck
 syntax
 systemu
 taskjuggler
@@ -365,6 +373,7 @@ transaction-simple
 treetop
 trollop
 ttfunk
+turbolinks
 typhoeus
 tzinfo
 uglifier

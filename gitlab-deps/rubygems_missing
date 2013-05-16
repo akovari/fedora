@@ -1,6 +1,5 @@
 acts-as-taggable-on
 annotate
-awesome_print
 backports
 better_errors
 binding_of_caller
@@ -30,16 +29,16 @@ gherkin-ruby
 github-linguist
 github-markdown
 github-markup
+gitlab-gollum-lib
 gitlab-grack
+gitlab-grit
 gitlab-pygments.rb
 gitlab_git
 gitlab_meta
 gitlab_omniauth-ldap
-gollum-lib
 gon
 grape
 grape-entity
-grit_ext
 growl
 guard
 guard-rspec
@@ -101,6 +100,5 @@ stamp
 stringex
 test_after_commit
 timers
-turbolinks
 virtus
 yajl-ruby

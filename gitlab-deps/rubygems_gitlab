@@ -58,17 +58,16 @@ gherkin-ruby
 github-linguist
 github-markdown
 github-markup
+gitlab-gollum-lib
 gitlab-grack
+gitlab-grit
 gitlab-pygments.rb
 gitlab_git
 gitlab_meta
 gitlab_omniauth-ldap
-gollum-lib
 gon
 grape
 grape-entity
-grit
-grit_ext
 growl
 guard
 guard-rspec
@@ -97,6 +96,7 @@ lumberjack
 mail
 method_source
 mime-types
+minitest
 modernizr
 multi_json
 multi_xml

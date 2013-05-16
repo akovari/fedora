@@ -7,7 +7,7 @@ chmod +x *sh *py
 sh rubysearch.sh
 
 # Remove unessecary file
-rm rubygems_fedora_raw
+#rm rubygems_fedora_raw
 
 # Find missing gems
 python2 gemfile.py
