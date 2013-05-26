@@ -47,6 +47,7 @@ execjs
 factory_girl
 factory_girl_rails
 faraday
+faraday_middleware
 faye-websocket
 ffaker
 ffi
@@ -76,6 +77,7 @@ haml
 haml-rails
 hashie
 hike
+hipchat
 http_parser.rb
 httparty
 httpauth
@@ -167,6 +169,7 @@ settingslogic
 sexp_processor
 shoulda-matchers
 sidekiq
+simple_oauth
 simplecov
 simplecov-html
 sinatra
@@ -187,8 +190,10 @@ thin
 thor
 tilt
 timers
+tinder
 treetop
 turbolinks
+twitter-stream
 tzinfo
 uglifier
 vcr

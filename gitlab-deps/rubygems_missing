@@ -20,6 +20,7 @@ email_spec
 enumerize
 escape_utils
 faraday
+faraday_middleware
 faye-websocket
 ffaker
 font-awesome-sass-rails
@@ -44,6 +45,7 @@ guard
 guard-rspec
 guard-spinach
 hashie
+hipchat
 http_parser.rb
 httpauth
 jquery-atwho-rails
@@ -92,6 +94,7 @@ select2-rails
 settingslogic
 shoulda-matchers
 sidekiq
+simple_oauth
 six
 spinach
 spinach-rails
@@ -100,5 +103,7 @@ stamp
 stringex
 test_after_commit
 timers
+tinder
+twitter-stream
 virtus
 yajl-ruby
