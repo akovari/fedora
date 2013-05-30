@@ -1,0 +1,4 @@
+rubygem-timers.src: W: spelling-error Summary(en_US) procs -> crops, pros, prods
+rubygem-timers.src: E: summary-too-long C Schedule procs to run after a certain time, or at periodic intervals, using any API that accepts a timeout
+rubygem-timers.src:46: W: macro-in-comment %gem_dir
+1 packages and 0 specfiles checked; 1 errors, 2 warnings.
