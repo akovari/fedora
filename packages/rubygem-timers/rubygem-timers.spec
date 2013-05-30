@@ -15,6 +15,7 @@ BuildRequires: ruby(release)
 BuildRequires: rubygems-devel 
 BuildRequires: ruby 
 BuildRequires: rubygem(bundler) 
+BuildRequires: rubygem(rspec) 
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
