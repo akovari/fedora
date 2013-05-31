@@ -4,7 +4,7 @@
 Name: rubygem-%{gem_name}
 Version: 1.1.0
 Release: 1%{?dist}
-Summary: Schedule procs to run after a certain time, or at periodic intervals, using any API that accepts a timeout
+Summary: Schedule procs to run after a certain time, or at periodic intervals
 Group: Development/Languages
 License: MIT
 URL: https://github.com/tarcieri/timers
@@ -14,14 +14,12 @@ Requires: ruby(rubygems)
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel 
 BuildRequires: ruby 
-BuildRequires: rubygem(bundler) 
 BuildRequires: rubygem(rspec) 
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
 %description
 Pure Ruby one-shot and periodic timers
-
 
 %package doc
 Summary: Documentation for %{name}
@@ -43,7 +41,7 @@ gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 # Create the gem as gem install only works on a gem file
 gem build %{gem_name}.gemspec
 
-# %%gem_install compiles any C extensions and installs the gem into ./%gem_dir
+# %%gem_install compiles any C extensions and installs the gem into ./%%gem_dir
 # by default, so that we can move it into the buildroot in %%install
 %gem_install
 
@@ -52,17 +50,23 @@ mkdir -p %{buildroot}%{gem_dir}
 cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
+chmod 755 %{buildroot}%{gem_instdir}/Rakefile
+
 %check
 pushd .
+
+# Bundler is used only for development. No need to install it.
+sed -i '/bundler/d' spec/spec_helper.rb
+
 rspec spec
 popd
 
 %files
 %dir %{gem_instdir}
 %{gem_libdir}
-%exclude %{gem_cache}
 %{gem_spec}
 %doc %{gem_instdir}/LICENSE
+%exclude %{gem_cache}
 %exclude %{gem_instdir}/.*
 
 %files doc

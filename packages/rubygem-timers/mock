@@ -3,7 +3,7 @@ Start: init plugins
 INFO: selinux enabled
 Finish: init plugins
 Start: run
-INFO: Start(rubygem-timers-1.1.0-1.fc19.src.rpm)  Config(fedora-19-i386)
+INFO: Start(../SRPMS/rubygem-timers-1.1.0-1.fc19.src.rpm)  Config(fedora-19-i386)
 Start: lock buildroot
 Start: clean chroot
 INFO: chroot (/var/lib/mock/fedora-19-i386) unlocked and deleted
@@ -40,7 +40,6 @@ Start: Outputting list of installed packages
 Finish: Outputting list of installed packages
 Finish: rpmbuild -bb rubygem-timers-1.1.0-1.fc19.src.rpm
 Finish: build phase for rubygem-timers-1.1.0-1.fc19.src.rpm
-INFO: Done(rubygem-timers-1.1.0-1.fc19.src.rpm) Config(default) 1 minutes 35 seconds
+INFO: Done(../SRPMS/rubygem-timers-1.1.0-1.fc19.src.rpm) Config(default) 1 minutes 38 seconds
 INFO: Results and/or logs in: /var/lib/mock/fedora-19-i386/result
 Finish: run
-
