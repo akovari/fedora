@@ -7,7 +7,7 @@ Release: 1%{?dist}
 Summary: Schedule procs to run after a certain time, or at periodic intervals
 Group: Development/Languages
 License: MIT
-URL: https://github.com/tarcieri/timers
+URL: https://github.com/celluloid/timers
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
 Requires: ruby(rubygems) 
