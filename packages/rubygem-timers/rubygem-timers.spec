@@ -3,8 +3,8 @@
 
 Name: rubygem-%{gem_name}
 Version: 1.1.0
-Release: 1%{?dist}
-Summary: Schedule procs to run after a certain time, or at periodic intervals
+Release: 2%{?dist}
+Summary: Pure Ruby one-shot and periodic timers
 Group: Development/Languages
 License: MIT
 URL: https://github.com/celluloid/timers
@@ -19,7 +19,7 @@ BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
 %description
-Pure Ruby one-shot and periodic timers
+Schedule procs to run after a certain time using any API that accepts a timeout
 
 %package doc
 Summary: Documentation for %{name}
@@ -53,12 +53,12 @@ cp -pa .%{gem_dir}/* \
 chmod 755 %{buildroot}%{gem_instdir}/Rakefile
 
 %check
-pushd .
+pushd .%{gem_instdir}
 
 # Bundler is used only for development. No need to install it.
 sed -i '/bundler/d' spec/spec_helper.rb
 
-rspec spec
+rspec spec/
 popd
 
 %files
@@ -79,5 +79,8 @@ popd
 %{gem_instdir}/%{gem_name}.gemspec
 
 %changelog
+* Mon Jun 03 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 1.1.0-2
+- Fix Summary/Description tags
+
 * Thu May 30 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 1.1.0-1
 - Initial package
