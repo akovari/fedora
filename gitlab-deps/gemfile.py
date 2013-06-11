@@ -1,5 +1,6 @@
 #!/usr/bin/env python2
 
+import json
 import urllib2
 #import subprocess
 
@@ -65,6 +66,18 @@ def find_missing(gitlab_gems, common_gems):
 
     return missing_gems
 
+def gem_dependencies(gem_name):
+  '''List dependencies of a gem
+  '''
+  
+  url = 'https://rubygems.org/api/v1/gems/%s.json' % gem_name
+  js = json.load(urllib2.urlopen(url))
+  deps = js['dependencies']
+  runtime_deps = deps['runtime']
+  dev_deps = ['development']
+  
+  return runtime_deps
+
 
 def statistics(gitlab_gemlist, fedora_gemlist):
     '''
@@ -74,19 +87,19 @@ def statistics(gitlab_gemlist, fedora_gemlist):
 def main():
     #subprocess.call(['rubysearch.sh'], cwd='/home/axil/tools/fedora-gitlab/')
     gitlab_gems = gitlab_gems_list()
-    fedora_gems_file = '/home/axil/tools/fedora/gitlab-deps/rubygems_fedora'
+    fedora_gems_file = '/home/axil/fedora/gitlab-deps/rubygems_fedora'
     fedora_gems = fedora_gems_list(fedora_gems_file)
     common = common_gems(gitlab_gems, fedora_gems)
     missing = find_missing(gitlab_gems, fedora_gems)
 
     #to_file = raw_input('Save Gitlab\'s deps as: ')
-    to_file = '/home/axil/tools/fedora/gitlab-deps/rubygems_gitlab'
+    to_file = '/home/axil/fedora/gitlab-deps/rubygems_gitlab'
     f = open(to_file, 'w')
     for rubygem in gitlab_gems:  
         f.write(rubygem + '\n')
     f.close()
     
-    missing_gems = '/home/axil/tools/fedora/gitlab-deps/rubygems_missing'
+    missing_gems = '/home/axil/fedora/gitlab-deps/rubygems_missing'
     f = open(missing_gems, 'w')
     for rubygem in missing:  
         f.write(rubygem + '\n')

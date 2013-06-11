@@ -12,6 +12,7 @@ code_analyzer
 colorize
 connection_pool
 coveralls
+d3_rails
 debug_inspector
 descendants_tracker
 devise
@@ -23,7 +24,7 @@ faraday
 faraday_middleware
 faye-websocket
 ffaker
-font-awesome-sass-rails
+font-awesome-rails
 foreman
 gemoji
 gherkin-ruby
@@ -48,6 +49,8 @@ hashie
 hipchat
 http_parser.rb
 httpauth
+jasmine
+jasmine-core
 jquery-atwho-rails
 jquery-turbolinks
 jquery-ui-rails
@@ -104,6 +107,9 @@ stringex
 test_after_commit
 timers
 tinder
+turbolinks
 twitter-stream
+underscore-rails
 virtus
+websocket
 yajl-ruby

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-file_raw='/home/axil/tools/fedora/gitlab-deps/rubygems_fedora_raw'
-file_new='/home/axil/tools/fedora/gitlab-deps/rubygems_fedora'
+file_raw='/home/axil/fedora/gitlab-deps/rubygems_fedora_raw'
+file_new='/home/axil/fedora/gitlab-deps/rubygems_fedora'
 
 touch $file_raw
 yum search all rubygem | awk '{print $1}' > $file_raw

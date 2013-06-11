@@ -20,6 +20,7 @@ capybara
 carrierwave
 celluloid
 charlock_holmes
+childprocess
 chosen-rails
 code_analyzer
 coderay
@@ -31,6 +32,7 @@ colorize
 connection_pool
 coveralls
 crack
+d3_rails
 daemons
 database_cleaner
 debug_inspector
@@ -51,7 +53,7 @@ faraday_middleware
 faye-websocket
 ffaker
 ffi
-font-awesome-sass-rails
+font-awesome-rails
 foreman
 formatador
 gemoji
@@ -82,6 +84,8 @@ http_parser.rb
 httparty
 httpauth
 i18n
+jasmine
+jasmine-core
 journey
 jquery-atwho-rails
 jquery-rails
@@ -159,12 +163,14 @@ rspec-mocks
 rspec-rails
 ruby-progressbar
 rubyntlm
+rubyzip
 sanitize
 sass
 sass-rails
 sdoc
 seed-fu
 select2-rails
+selenium-webdriver
 settingslogic
 sexp_processor
 shoulda-matchers
@@ -196,9 +202,11 @@ turbolinks
 twitter-stream
 tzinfo
 uglifier
+underscore-rails
 vcr
 virtus
 warden
 webmock
+websocket
 xpath
 yajl-ruby
