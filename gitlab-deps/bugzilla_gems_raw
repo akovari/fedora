@@ -1,0 +1,65 @@
+#642601 ASSIGNED   - Jozef Zigmund - Review Request: rubygem-uuid - Ruby UUID generator based on RFC 4122
+#668822 ASSIGNED   - Minnikhanov - Review Request: rubygem-memcache-client - A Ruby library for accessing memcached
+#674085 NEW        - Miroslav Suchý - Review Request: rubygem-virt - Simplied interface to use ruby the libvirt library
+#683780 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-gem-open - Open gems on your favorite editor by running gem open command
+#683789 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-rubytree - RubyTree is a Ruby implementation of the generic tree data structure
+#683790 ASSIGNED   - Bohuslav "Slavek" Kabrda - Review Request: rubygem-hoe-yard - A Hoe plug-in for generating YARD documentation
+#721179 ASSIGNED   - Ryan Rix - Review Request: rubygem-extlib - Support library for DataMapper and Merb
+#725733 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-closure-compiler - Ruby Wrapper for the Google Closure Compiler
+#725768 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-yui-compressor - JavaScript and CSS minification library
+#728051 ASSIGNED   - Shawn Starr - Review Request: rubygem-stringex -  Extensions to ruby String class
+#738465 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-barista - Simple, integrated support for CoffeeScript in Rack and Rails applications
+#739478 ASSIGNED   - Vít Ondruch - Review request: rubygem-jammit - Industrial Strength Asset Packaging for Rails
+#745993 ASSIGNED   - Bohuslav "Slavek" Kabrda - Review Request: rubygem-useragent - HTTP User Agent parser
+#771297 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-bluecloth - A Ruby implementation of John Gruber's Markdown
+#771311 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-gli - Git-Like Interface Command Line Parser for Ruby
+#771314 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-parslet - Parser construction library with great error reporting in Ruby
+#771316 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-blankslate - Ruby gem which provides an abstract base class with no predefined methods
+#782560 ASSIGNED   - Bohuslav "Slavek" Kabrda - Review Request: rubygem-ruby-shadow -  *nix Shadow Password Module
+#785560 ASSIGNED   - Emanuel Rietveld - Review Request: rubygem-wrongdoc -  RDoc done right (IMNSHO)
+#786636 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-unicorn - Rack HTTP server for fast clients and Unix
+#787350 ASSIGNED   - Bohuslav "Slavek" Kabrda - Review Request: rubygem-rspec-puppet - RSpec tests for your Puppet manifests
+#796112 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-tidy_ffi - Tidy library interface via FFI
+#816991 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-backports - Backports of Ruby 1.8.7+ for older ruby
+#823344 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-ohai - detects data about your system, exports as JSON for use with Chef
+#823351 ASSIGNED   - Vít Ondruch - Review Request: rubygem-yajl-ruby - Ruby C bindings to YAJL - a JSON stream-based parser
+#823352 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-chef - a client for the Chef config management system
+#825493 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-prototype-rails - Prototype, Scriptaculous, and RJS for Ruby on Rails
+#839649 ASSIGNED   - Josef Stribny - Review Request: rubygem-rails_best_practices - a code metric tool for rails codes, written in Ruby.
+#843153 ASSIGNED   - Vít Ondruch - Review Request: rubygem-sfcc - Ruby bindings for SBLIM client library
+#878421 ASSIGNED   - Bohuslav "Slavek" Kabrda - Review Request: rubygem-bundler_ext - Load system gems via Bundler DSL
+#880203 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-strong_parameters - Permitted and required parameters for Action Pack
+#886871 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-paint - Terminal painter
+#892314 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-unf_ext -  Unicode Normalization Form support library for CRuby
+#894482 ASSIGNED   - Michael Scherer - Review Request: rubygem-openshift-origin-auth-kerberos - OpenShift plugin for kerberos auth service
+#894524 ASSIGNED   - Nobody's working on this, feel free to take it - Review Request: rubygem-openshift-origin-console - OpenShift Origin Management Console
+#895166 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-zbxapi - Ruby wrapper to the Zabbix API
+#904639 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-unf - Wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
+#904640 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-domain_name - Domain Name manipulation library for Ruby
+#905240 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-log4r - Comprehensive and flexible logging library for ruby
+#905396 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-vagrant - Provisioning and deployment of virtual instances
+#912960 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-gdk3 - Ruby binding of GDK-3.x
+#912961 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-gtk3 - Ruby/GTK3 is a Ruby binding of GTK+-3.x
+#915009 ASSIGNED   - Ricky Elrod - Review Request: rubygem-ruby-pcap - Ruby interface to LBL Packet Capture library.
+#917074 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-angular-rails - Helpers for angularjs in a rails project
+#920436 ASSIGNED   - Mamoru TASAKA - Review Request: rubygem-bootstrap-sass - Bootstrap, converted to Sass
+#927374 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-rugged - Ruby binding to the libgit2 linkable library
+#929005 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-awestruct: a framework for creating static HTML sites
+#946862 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-git-up - git command to fetch and rebase all branches
+#949317 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-serialport - Ruby library that provide class for RS232 serail port
+#949319 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-icaro - Ruby Api for Icaro Robotic
+#960047 ASSIGNED   - Nobody's working on this, feel free to take it - Review Request: rubygem-annotate - Annotates Rails Models, routes, fixtures etc based on the database schema
+#960056 ASSIGNED   - Josef Stribny - Review Request: rubygem-debug_inspector - A Ruby wrapper for the MRI 2.0 debug_inspector API
+#960061 ASSIGNED   - Josef Stribny - Review Request: rubygem-guard - Guard gives notifications about file modifications
+#960064 ASSIGNED   - Josef Stribny - Review Request: rubygem-lumberjack - A fast logging utility
+#960142 ASSIGNED   - Josef Stribny - Review Request: rubygem-faker - Easily generate fake data
+#961364 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-activerecord-deprecated_finders - This gem contains deprecated finder APIs extracted from Active Record
+#961375 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-thread_safe - Thread-safe collections and utilities for Ruby
+#967332 ASSIGNED   - Josef Stribny - Review Request: rubygem-chardet - Character encoding auto-detection in Ruby
+#967333 ASSIGNED   - Josef Stribny - Review Request: rubygem-code_analyzer - Helps build custom code analyzer tools
+#967334 ASSIGNED   - Vít Ondruch - Review Request: rubygem-connection_pool - Generic connection pool for Ruby
+#967335 ASSIGNED   - Vít Ondruch - Review Request: rubygem-dotenv - Loads environment variables from `.env`
+#967337 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-faraday - HTTP/REST API client library
+#967338 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-font-awesome-sass-rails - Font Awesome in SASS for Rails
+#967396 ASSIGNED   - Josef Stribny - Review Request: rubygem-chosen-rails - Integrate Chosen JavaScript library with Rails asset pipeline
+#969877 ASSIGNED   - Vít Ondruch - Review Request: rubygem-timers - Pure Ruby one-shot and periodic timers
