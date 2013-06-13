@@ -8,6 +8,7 @@ acts-as-taggable-on
 addressable
 annotate
 arel
+asciidoctor
 awesome_print
 backports
 bcrypt-ruby
