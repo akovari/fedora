@@ -30,14 +30,14 @@ def gitlab_gems_list():
 def fedora_gems_list(fedora_gems_file):
     '''file -> list
 
-    Returns a list of rubygems currently packaged in Fedora
+    Returns a list of rubygems currently packaged or pending review in Fedora.
     '''
     
     f = open(fedora_gems_file, 'r')
     gemlist = f.read().split('\n')
     f.close()
 
-    return gemlist
+    return list(set(gemlist))
     
 def common_gems(gitlab_gemlist, fedora_gemlist):
     ''' lists -> set
@@ -85,23 +85,29 @@ def statistics(gitlab_gemlist, fedora_gemlist):
     pass
 
 def main():
-    #subprocess.call(['rubysearch.sh'], cwd='/home/axil/tools/fedora-gitlab/')
-    gitlab_gems = gitlab_gems_list()
+    
     fedora_gems_file = '/home/axil/fedora/gitlab-deps/rubygems_fedora'
+    gitlab_gems = gitlab_gems_list()
     fedora_gems = fedora_gems_list(fedora_gems_file)
     common = common_gems(gitlab_gems, fedora_gems)
-    missing = find_missing(gitlab_gems, fedora_gems)
+    missing_gems = find_missing(gitlab_gems, fedora_gems)
 
     #to_file = raw_input('Save Gitlab\'s deps as: ')
-    to_file = '/home/axil/fedora/gitlab-deps/rubygems_gitlab'
-    f = open(to_file, 'w')
+    rubygems_gitlab = '/home/axil/fedora/gitlab-deps/rubygems_gitlab'
+    f = open(rubygems_gitlab, 'w')
     for rubygem in gitlab_gems:  
         f.write(rubygem + '\n')
     f.close()
     
-    missing_gems = '/home/axil/fedora/gitlab-deps/rubygems_missing'
-    f = open(missing_gems, 'w')
-    for rubygem in missing:  
+    rubygems_missing = '/home/axil/fedora/gitlab-deps/rubygems_missing'
+    f = open(rubygems_missing, 'w')
+    for rubygem in missing_gems:  
+        f.write(rubygem + '\n')
+    f.close()
+    
+    rubygems_common = '/home/axil/fedora/gitlab-deps/rubygems_common'
+    f = open(rubygems_common, 'w')
+    for rubygem in missing_gems:  
         f.write(rubygem + '\n')
     f.close()
     
