@@ -26,7 +26,7 @@ echo 'Searching Bugzilla for Review Requests...'
 bugzilla query --product=fedora --bug_status=new,assigned --component='Package Review' --short_desc='rubygem-' \
   | awk 'BEGIN { FS = " - " } ; { print $3 }' | awk 'BEGIN { FS = ":" } ; { print $2 }' | sed -e 's/ rubygem-//' > $bugzilla_gems
 
-bugzilla query --product=fedora --bug_status=new,assigned --component='Package Review' --short_desc='rubygem-' > $bugzilla_gems_raw
+bugzilla query --product=fedora --bug_status=new,assigned --component='Package Review' --short_desc='rubygem-' | sort -k2 -r > $bugzilla_gems_raw
 
 cat $bugzilla_gems >> $fedora_gems
 
