@@ -4,7 +4,7 @@
 chmod +x *sh *py
 
 # Find total gems packaged in Fedora
-sh rubysearch.sh
+sh reposearch.sh
 
 # Remove unessecary file
 #rm rubygems_fedora_raw
