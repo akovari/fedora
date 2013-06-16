@@ -2,7 +2,7 @@
 
 import json
 import urllib2
-#import subprocess
+import re
 
 def gitlab_gems_list():
     '''url strings -> list
@@ -30,7 +30,7 @@ def gitlab_gems_list():
 def fedora_gems_list(fedora_gems_file):
     '''file -> list
 
-    Returns a list of rubygems currently packaged or pending review in Fedora.
+    Returns a list of rubygems currently packaged in Fedora.
     '''
     
     f = open(fedora_gems_file, 'r')
@@ -77,6 +77,33 @@ def gem_dependencies(gem_name):
   dev_deps = ['development']
   
   return runtime_deps
+
+def bugzilla_sort_gems(rubygems_bugzilla_raw):
+  """Returns a dictionary with rubygems pending review for Fedora 
+  and their status.
+
+  """
+  f = open(rubygems_bugzilla_raw, 'r')
+  raw_list = f.readlines()
+  f.close()
+  
+  dict = {}
+
+  for line in raw_list:
+    
+    split_line = re.split(' - ', line)
+    strip_rubygem = re.search(r'rubygem-[\w-]+', line).group()
+    gem_name = re.sub('rubygem-', '', strip_rubygem)
+    bug_id = re.search(r'\d+', line).group()
+    status = re.search(r'[A-Z]+', line).group()
+    assignee = split_line[1]
+    description = split_line[3].strip('\n')
+
+    dict[gem_name] = [bug_id, status, assignee, description]
+
+  return dict
+
+
 
 
 def statistics(gitlab_gemlist, fedora_gemlist):

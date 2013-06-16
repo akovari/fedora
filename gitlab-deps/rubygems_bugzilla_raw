@@ -30,7 +30,7 @@
 #771316 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-blankslate - Ruby gem which provides an abstract base class with no predefined methods
 #738465 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-barista - Simple, integrated support for CoffeeScript in Rack and Rails applications
 #816991 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-backports - Backports of Ruby 1.8.7+ for older ruby
-#929005 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-awestruct: a framework for creating static HTML sites
+#929005 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-awestruct - A framework for creating static HTML sites
 #917074 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-angular-rails - Helpers for angularjs in a rails project
 #961364 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-activerecord-deprecated_finders - This gem contains deprecated finder APIs extracted from Active Record
 #674085 NEW        - Miroslav Suchý - Review Request: rubygem-virt - Simplied interface to use ruby the libvirt library
