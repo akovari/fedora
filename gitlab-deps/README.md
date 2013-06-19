@@ -1,9 +1,12 @@
-These are some dummy scripts to find which gems that [GitLab][gitlab] is using, 
-are missing from Fedora repositories
+These are some dummy scripts to find which gems that [GitLab][gitlab] is using, are missing from Fedora repositories.
 
-Make sure you have python2 installed, clone the repository and run:
+On a Fedora machine, clone the repository, cd into it and run:
 
-	./run.sh
+```  
+sudo yum install python2 python-bugzilla
+chmod +x run.sh
+./run.sh
+```
 
 More info in my [blogpost][].
 
