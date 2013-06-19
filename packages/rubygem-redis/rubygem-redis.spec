@@ -38,7 +38,7 @@ Documentation for %{name}
 %prep
 gem unpack %{SOURCE0}
 
-%setup -q -D -T -n  %{gem_name}-%{version}
+%setup -q -T -n  %{gem_name}-%{version}
 
 gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 
@@ -50,33 +50,42 @@ gem build %{gem_name}.gemspec
 # by default, so that we can move it into the buildroot in %%install
 %gem_install
 
+%check
+
+## We need redis running for some tests.
+## Is this the right way to do it?
+#systemctl start redis
+
+pushd .%{gem_instdir}
+
+## Test requires redis listening on port 6381 whereas in Fedora 
+## we have 6379 set as default. Change that port in test file.
+sed -i 's|6381|6379|' test/helper.rb
+
+testrb -Ilib test/*_test.rb
+popd
+
 %install
 mkdir -p %{buildroot}%{gem_dir}
 cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
-%check
-# We need redis running for some tests
-#systemctl start redis
-#sed -i 's/port 6379/port 6381/' /etc/redis.conf
-
-pushd .%{gem_install}
-
-#for file in `grep -RE '6381.*rb' %{buildroot}%{gem_dir} | cut -d ':' -f 1`; do sed -i 's/6381/6379/g' $file; done
-#sed -i 's|.test/db/redis.sock|/tmp/redis.sock|' test/internals_test.rb
-
-testrb -Ilib test/*_test.rb
-popd
-
 %files
 %dir %{gem_instdir}
 %{gem_libdir}
+%doc %{gem_instdir}/LICENSE
 %exclude %{gem_cache}
 %{gem_spec}
 
 %files doc
 %doc %{gem_docdir}
+%doc %{gem_instdir}/CHANGELOG.md
+%doc %{gem_instdir}/README.md
+%doc %{gem_instdir}/Rakefile
+%doc %{gem_instdir}/examples
+%doc %{gem_instdir}/test
+%doc %{gem_instdir}/benchmarking
 
 %changelog
-* Sat Jun 01 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 3.0.4-1
+* Sat Jun 19 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 3.0.4-1
 - Initial package
