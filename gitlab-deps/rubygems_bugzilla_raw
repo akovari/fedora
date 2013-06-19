@@ -37,7 +37,9 @@
 #823351 ASSIGNED   - Vít Ondruch - Review Request: rubygem-yajl-ruby - Ruby C bindings to YAJL - a JSON stream-based parser
 #969877 ASSIGNED   - Vít Ondruch - Review Request: rubygem-timers - Pure Ruby one-shot and periodic timers
 #843153 ASSIGNED   - Vít Ondruch - Review Request: rubygem-sfcc - Ruby bindings for SBLIM client library
+#974889 ASSIGNED   - Vít Ondruch - Review Request: rubygem-mysql2 - A simple, fast Mysql library for Ruby, binding to libmysql
 #739478 ASSIGNED   - Vít Ondruch - Review request: rubygem-jammit - Industrial Strength Asset Packaging for Rails
+#975339 ASSIGNED   - Vít Ondruch - Review Request: rubygem-gssapi - A FFI wrapper around the system GSSAPI library
 #967335 ASSIGNED   - Vít Ondruch - Review Request: rubygem-dotenv - Loads environment variables from `.env`
 #967334 ASSIGNED   - Vít Ondruch - Review Request: rubygem-connection_pool - Generic connection pool for Ruby
 #728051 ASSIGNED   - Shawn Starr - Review Request: rubygem-stringex -  Extensions to ruby String class
@@ -47,7 +49,6 @@
 #960047 ASSIGNED   - Nobody's working on this, feel free to take it - Review Request: rubygem-annotate - Annotates Rails Models, routes, fixtures etc based on the database schema
 #668822 ASSIGNED   - Minnikhanov - Review Request: rubygem-memcache-client - A Ruby library for accessing memcached
 #894482 ASSIGNED   - Michael Scherer - Review Request: rubygem-openshift-origin-auth-kerberos - OpenShift plugin for kerberos auth service
-#920436 ASSIGNED   - Mamoru TASAKA - Review Request: rubygem-bootstrap-sass - Bootstrap, converted to Sass
 #642601 ASSIGNED   - Jozef Zigmund - Review Request: rubygem-uuid - Ruby UUID generator based on RFC 4122
 #839649 ASSIGNED   - Josef Stribny - Review Request: rubygem-rails_best_practices - a code metric tool for rails codes, written in Ruby.
 #960064 ASSIGNED   - Josef Stribny - Review Request: rubygem-lumberjack - A fast logging utility

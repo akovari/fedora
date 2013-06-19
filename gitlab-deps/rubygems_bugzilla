@@ -42,7 +42,6 @@ gdk3
 gtk3
 ruby-pcap
 angular-rails
-bootstrap-sass
 rugged
 awestruct
 git-up
@@ -63,3 +62,5 @@ faraday
 font-awesome-sass-rails
 chosen-rails
 timers
+mysql2
+gssapi

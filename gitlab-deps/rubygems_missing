@@ -1,6 +1,7 @@
 acts-as-taggable-on
 better_errors
 binding_of_caller
+bootstrap-sass
 carrierwave
 celluloid
 charlock_holmes
@@ -49,7 +50,6 @@ kaminari
 letter_opener
 libv8
 modernizr
-mysql2
 oauth2
 omniauth
 omniauth-github
