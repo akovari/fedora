@@ -49,6 +49,7 @@
 #960047 ASSIGNED   - Nobody's working on this, feel free to take it - Review Request: rubygem-annotate - Annotates Rails Models, routes, fixtures etc based on the database schema
 #668822 ASSIGNED   - Minnikhanov - Review Request: rubygem-memcache-client - A Ruby library for accessing memcached
 #894482 ASSIGNED   - Michael Scherer - Review Request: rubygem-openshift-origin-auth-kerberos - OpenShift plugin for kerberos auth service
+#976468 ASSIGNED   - Marcelo Barbosa - Review Request: rubygem-teamocil - Easy session, window and pane layouts for tmux
 #642601 ASSIGNED   - Jozef Zigmund - Review Request: rubygem-uuid - Ruby UUID generator based on RFC 4122
 #839649 ASSIGNED   - Josef Stribny - Review Request: rubygem-rails_best_practices - a code metric tool for rails codes, written in Ruby.
 #960064 ASSIGNED   - Josef Stribny - Review Request: rubygem-lumberjack - A fast logging utility
