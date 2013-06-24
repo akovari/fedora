@@ -1,4 +1,4 @@
-Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.3LOU0K
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.L59JOQ
 + umask 022
 + cd /home/axil/rpmbuild/BUILD
 + gem unpack /home/axil/rpmbuild/SOURCES/redis-3.0.4.gem
@@ -8,7 +8,7 @@ Unpacked gem: '/home/axil/rpmbuild/BUILD/redis-3.0.4'
 + /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
 + gem spec /home/axil/rpmbuild/SOURCES/redis-3.0.4.gem -l --ruby
 + exit 0
-Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.SH4Icu
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.ecxIz9
 + umask 022
 + cd /home/axil/rpmbuild/BUILD
 + cd redis-3.0.4
@@ -19,7 +19,7 @@ WARNING:  licenses is empty
   Version: 3.0.4
   File: redis-3.0.4.gem
 + mkdir -p ./usr/share/gems
-+ CONFIGURE_ARGS='--with-cflags='\''-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -grecord-gcc-switches  -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables'\'' '
++ CONFIGURE_ARGS='--with-cflags='\''-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -grecord-gcc-switches  -m64 -mtune=generic'\'' '
 + gem install -V --local --install-dir ./usr/share/gems --bindir ./usr/bin --force --document=ri,rdoc redis-3.0.4.gem
 Installing gem redis-3.0.4
 /home/axil/rpmbuild/BUILD/redis-3.0.4/usr/share/gems/gems/redis-3.0.4/.gitignore
@@ -121,21 +121,21 @@ Successfully installed redis-3.0.4
 Parsing documentation for redis-3.0.4
 Parsing sources...
 100% [14/14]  lib/redis/version.rb                                              
-Done installing documentation for redis after 3 seconds
+Done installing documentation for redis after 2 seconds
 1 gem installed
 + exit 0
-Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.RSvleF
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.DvkzHB
 + umask 022
 + cd /home/axil/rpmbuild/BUILD
-+ '[' /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.i386 '!=' / ']'
-+ rm -rf /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.i386
-++ dirname /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.i386
++ '[' /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.x86_64 '!=' / ']'
++ rm -rf /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.x86_64
+++ dirname /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.x86_64
 + mkdir -p /home/axil/rpmbuild/BUILDROOT
-+ mkdir /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.i386
++ mkdir /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.x86_64
 + cd redis-3.0.4
-+ mkdir -p /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.i386/usr/share/gems
-+ cp -pa ./usr/share/gems/build_info ./usr/share/gems/cache ./usr/share/gems/doc ./usr/share/gems/gems ./usr/share/gems/specifications /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.i386/usr/share/gems/
-+ /usr/lib/rpm/find-debuginfo.sh --strict-build-id -m --run-dwz --dwz-low-mem-die-limit 10000000 --dwz-max-die-limit 50000000 /home/axil/rpmbuild/BUILD/redis-3.0.4
++ mkdir -p /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.x86_64/usr/share/gems
++ cp -pa ./usr/share/gems/build_info ./usr/share/gems/cache ./usr/share/gems/doc ./usr/share/gems/gems ./usr/share/gems/specifications /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.x86_64/usr/share/gems/
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id -m --run-dwz --dwz-low-mem-die-limit 10000000 --dwz-max-die-limit 110000000 /home/axil/rpmbuild/BUILD/redis-3.0.4
 + '[' noarch = noarch ']'
 + case "${QA_CHECK_RPATHS:-}" in
 + /usr/lib/rpm/check-buildroot
@@ -144,178 +144,40 @@ Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.RSvleF
 + /usr/lib/rpm/brp-python-bytecompile /usr/bin/python 1
 + /usr/lib/rpm/redhat/brp-python-hardlink
 + /usr/lib/rpm/redhat/brp-java-repack-jars
+Executing(%check): /bin/sh -e /var/tmp/rpm-tmp.epw064
++ umask 022
++ cd /home/axil/rpmbuild/BUILD
++ cd redis-3.0.4
++ pushd ./usr/share/gems/gems/redis-3.0.4
+~/rpmbuild/BUILD/redis-3.0.4/usr/share/gems/gems/redis-3.0.4 ~/rpmbuild/BUILD/redis-3.0.4
++ /usr/sbin/redis-server test/test.conf
++ testrb -Ilib test/blocking_commands_test.rb test/command_map_test.rb test/commands_on_hashes_test.rb test/commands_on_lists_test.rb test/commands_on_sets_test.rb test/commands_on_sorted_sets_test.rb test/commands_on_strings_test.rb test/commands_on_value_types_test.rb test/connection_handling_test.rb test/distributed_blocking_commands_test.rb test/distributed_commands_on_hashes_test.rb test/distributed_commands_on_lists_test.rb test/distributed_commands_on_sets_test.rb test/distributed_commands_on_sorted_sets_test.rb test/distributed_commands_on_strings_test.rb test/distributed_commands_on_value_types_test.rb test/distributed_commands_requiring_clustering_test.rb test/distributed_connection_handling_test.rb test/distributed_internals_test.rb test/distributed_key_tags_test.rb test/distributed_persistence_control_commands_test.rb test/distributed_publish_subscribe_test.rb test/distributed_remote_server_control_commands_test.rb test/distributed_scripting_test.rb test/distributed_sorting_test.rb test/distributed_test.rb test/distributed_transactions_test.rb test/encoding_test.rb test/error_replies_test.rb test/helper_test.rb test/internals_test.rb test/persistence_control_commands_test.rb test/pipelining_commands_test.rb test/publish_subscribe_test.rb test/remote_server_control_commands_test.rb test/scripting_test.rb test/sorting_test.rb test/thread_safety_test.rb test/transactions_test.rb test/unknown_commands_test.rb test/url_param_test.rb
+Run options: -Ilib
+
+# Running tests:
+
+Finished tests in 13.504759s, 35.9133 tests/s, 132.9902 assertions/s.                                             
+485 tests, 1796 assertions, 0 failures, 0 errors, 0 skips
+
+ruby -v: ruby 2.0.0p195 (2013-05-14 revision 40734) [x86_64-linux]
+++ cat test/db/redis.pid
++ kill -INT 24417
++ popd
+~/rpmbuild/BUILD/redis-3.0.4
++ exit 0
 Processing files: rubygem-redis-3.0.4-1.fc19.noarch
 Provides: rubygem(redis) = 3.0.4 rubygem-redis = 3.0.4-1.fc19
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
 Processing files: rubygem-redis-doc-3.0.4-1.fc19.noarch
 Provides: rubygem-redis-doc = 3.0.4-1.fc19
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
-Checking for unpackaged file(s): /usr/lib/rpm/check-files /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.i386
-error: Installed (but unpackaged) file(s) found:
-   /usr/share/gems/gems/redis-3.0.4/.gitignore
-   /usr/share/gems/gems/redis-3.0.4/.order
-   /usr/share/gems/gems/redis-3.0.4/.travis.yml
-   /usr/share/gems/gems/redis-3.0.4/.travis/Gemfile
-   /usr/share/gems/gems/redis-3.0.4/.yardopts
-   /usr/share/gems/gems/redis-3.0.4/CHANGELOG.md
-   /usr/share/gems/gems/redis-3.0.4/LICENSE
-   /usr/share/gems/gems/redis-3.0.4/README.md
-   /usr/share/gems/gems/redis-3.0.4/Rakefile
-   /usr/share/gems/gems/redis-3.0.4/benchmarking/logging.rb
-   /usr/share/gems/gems/redis-3.0.4/benchmarking/pipeline.rb
-   /usr/share/gems/gems/redis-3.0.4/benchmarking/speed.rb
-   /usr/share/gems/gems/redis-3.0.4/benchmarking/suite.rb
-   /usr/share/gems/gems/redis-3.0.4/benchmarking/worker.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/basic.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/dist_redis.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/incr-decr.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/list.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/pubsub.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/sets.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/unicorn/config.ru
-   /usr/share/gems/gems/redis-3.0.4/examples/unicorn/unicorn.rb
-   /usr/share/gems/gems/redis-3.0.4/redis.gemspec
-   /usr/share/gems/gems/redis-3.0.4/test/blocking_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/command_map_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/commands_on_hashes_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/commands_on_lists_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/commands_on_sets_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/commands_on_sorted_sets_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/commands_on_strings_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/commands_on_value_types_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/connection_handling_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/db/.gitignore
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_blocking_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_on_hashes_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_on_lists_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_on_sets_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_on_sorted_sets_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_on_strings_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_on_value_types_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_requiring_clustering_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_connection_handling_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_internals_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_key_tags_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_persistence_control_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_publish_subscribe_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_remote_server_control_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_scripting_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_sorting_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_transactions_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/encoding_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/error_replies_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/helper.rb
-   /usr/share/gems/gems/redis-3.0.4/test/helper_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/internals_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/blocking_commands.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/hashes.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/lists.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/sets.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/sorted_sets.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/strings.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/value_types.rb
-   /usr/share/gems/gems/redis-3.0.4/test/persistence_control_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/pipelining_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/publish_subscribe_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/remote_server_control_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/scripting_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/sorting_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/support/connection/hiredis.rb
-   /usr/share/gems/gems/redis-3.0.4/test/support/connection/ruby.rb
-   /usr/share/gems/gems/redis-3.0.4/test/support/connection/synchrony.rb
-   /usr/share/gems/gems/redis-3.0.4/test/support/redis_mock.rb
-   /usr/share/gems/gems/redis-3.0.4/test/support/wire/synchrony.rb
-   /usr/share/gems/gems/redis-3.0.4/test/support/wire/thread.rb
-   /usr/share/gems/gems/redis-3.0.4/test/synchrony_driver.rb
-   /usr/share/gems/gems/redis-3.0.4/test/test.conf
-   /usr/share/gems/gems/redis-3.0.4/test/thread_safety_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/transactions_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/unknown_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/url_param_test.rb
-
-
-RPM build errors:
-    Installed (but unpackaged) file(s) found:
-   /usr/share/gems/gems/redis-3.0.4/.gitignore
-   /usr/share/gems/gems/redis-3.0.4/.order
-   /usr/share/gems/gems/redis-3.0.4/.travis.yml
-   /usr/share/gems/gems/redis-3.0.4/.travis/Gemfile
-   /usr/share/gems/gems/redis-3.0.4/.yardopts
-   /usr/share/gems/gems/redis-3.0.4/CHANGELOG.md
-   /usr/share/gems/gems/redis-3.0.4/LICENSE
-   /usr/share/gems/gems/redis-3.0.4/README.md
-   /usr/share/gems/gems/redis-3.0.4/Rakefile
-   /usr/share/gems/gems/redis-3.0.4/benchmarking/logging.rb
-   /usr/share/gems/gems/redis-3.0.4/benchmarking/pipeline.rb
-   /usr/share/gems/gems/redis-3.0.4/benchmarking/speed.rb
-   /usr/share/gems/gems/redis-3.0.4/benchmarking/suite.rb
-   /usr/share/gems/gems/redis-3.0.4/benchmarking/worker.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/basic.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/dist_redis.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/incr-decr.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/list.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/pubsub.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/sets.rb
-   /usr/share/gems/gems/redis-3.0.4/examples/unicorn/config.ru
-   /usr/share/gems/gems/redis-3.0.4/examples/unicorn/unicorn.rb
-   /usr/share/gems/gems/redis-3.0.4/redis.gemspec
-   /usr/share/gems/gems/redis-3.0.4/test/blocking_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/command_map_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/commands_on_hashes_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/commands_on_lists_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/commands_on_sets_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/commands_on_sorted_sets_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/commands_on_strings_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/commands_on_value_types_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/connection_handling_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/db/.gitignore
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_blocking_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_on_hashes_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_on_lists_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_on_sets_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_on_sorted_sets_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_on_strings_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_on_value_types_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_commands_requiring_clustering_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_connection_handling_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_internals_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_key_tags_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_persistence_control_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_publish_subscribe_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_remote_server_control_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_scripting_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_sorting_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/distributed_transactions_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/encoding_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/error_replies_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/helper.rb
-   /usr/share/gems/gems/redis-3.0.4/test/helper_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/internals_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/blocking_commands.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/hashes.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/lists.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/sets.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/sorted_sets.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/strings.rb
-   /usr/share/gems/gems/redis-3.0.4/test/lint/value_types.rb
-   /usr/share/gems/gems/redis-3.0.4/test/persistence_control_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/pipelining_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/publish_subscribe_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/remote_server_control_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/scripting_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/sorting_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/support/connection/hiredis.rb
-   /usr/share/gems/gems/redis-3.0.4/test/support/connection/ruby.rb
-   /usr/share/gems/gems/redis-3.0.4/test/support/connection/synchrony.rb
-   /usr/share/gems/gems/redis-3.0.4/test/support/redis_mock.rb
-   /usr/share/gems/gems/redis-3.0.4/test/support/wire/synchrony.rb
-   /usr/share/gems/gems/redis-3.0.4/test/support/wire/thread.rb
-   /usr/share/gems/gems/redis-3.0.4/test/synchrony_driver.rb
-   /usr/share/gems/gems/redis-3.0.4/test/test.conf
-   /usr/share/gems/gems/redis-3.0.4/test/thread_safety_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/transactions_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/unknown_commands_test.rb
-   /usr/share/gems/gems/redis-3.0.4/test/url_param_test.rb
-
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.x86_64
+Wrote: /home/axil/rpmbuild/SRPMS/rubygem-redis-3.0.4-1.fc19.src.rpm
+Wrote: /home/axil/rpmbuild/RPMS/noarch/rubygem-redis-3.0.4-1.fc19.noarch.rpm
+Wrote: /home/axil/rpmbuild/RPMS/noarch/rubygem-redis-doc-3.0.4-1.fc19.noarch.rpm
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.PxCk1k
++ umask 022
++ cd /home/axil/rpmbuild/BUILD
++ cd redis-3.0.4
++ /usr/bin/rm -rf /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.x86_64
++ exit 0

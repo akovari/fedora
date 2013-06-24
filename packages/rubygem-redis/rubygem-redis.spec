@@ -38,7 +38,7 @@ Documentation for %{name}
 %prep
 gem unpack %{SOURCE0}
 
-%setup -q -T -n  %{gem_name}-%{version}
+%setup -q -T -D -n  %{gem_name}-%{version}
 
 gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 
@@ -51,18 +51,16 @@ gem build %{gem_name}.gemspec
 %gem_install
 
 %check
-
-## We need redis running for some tests.
-## Is this the right way to do it?
-#systemctl start redis
-
 pushd .%{gem_instdir}
 
-## Test requires redis listening on port 6381 whereas in Fedora 
-## we have 6379 set as default. Change that port in test file.
-sed -i 's|6381|6379|' test/helper.rb
+## Start a testing redis server instance
+/usr/sbin/redis-server test/test.conf
 
 testrb -Ilib test/*_test.rb
+
+## Kill running redis-server
+kill -INT `cat test/db/redis.pid`
+
 popd
 
 %install
@@ -75,17 +73,19 @@ cp -pa .%{gem_dir}/* \
 %{gem_libdir}
 %doc %{gem_instdir}/LICENSE
 %exclude %{gem_cache}
+%exclude %{gem_instdir}/.*
 %{gem_spec}
 
 %files doc
 %doc %{gem_docdir}
 %doc %{gem_instdir}/CHANGELOG.md
 %doc %{gem_instdir}/README.md
-%doc %{gem_instdir}/Rakefile
-%doc %{gem_instdir}/examples
-%doc %{gem_instdir}/test
-%doc %{gem_instdir}/benchmarking
+%{gem_instdir}/%{gem_name}.gemspec
+%{gem_instdir}/Rakefile
+%{gem_instdir}/examples/
+%{gem_instdir}/test/
+%{gem_instdir}/benchmarking/
 
 %changelog
-* Sat Jun 19 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 3.0.4-1
+* Sun Jun 23 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 3.0.4-1
 - Initial package
