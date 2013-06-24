@@ -42,11 +42,11 @@
 #975339 ASSIGNED   - Vít Ondruch - Review Request: rubygem-gssapi - A FFI wrapper around the system GSSAPI library
 #967335 ASSIGNED   - Vít Ondruch - Review Request: rubygem-dotenv - Loads environment variables from `.env`
 #967334 ASSIGNED   - Vít Ondruch - Review Request: rubygem-connection_pool - Generic connection pool for Ruby
+#960047 ASSIGNED   - Vít Ondruch - Review Request: rubygem-annotate - Annotates Rails Models, routes, fixtures etc based on the database schema
 #728051 ASSIGNED   - Shawn Starr - Review Request: rubygem-stringex -  Extensions to ruby String class
 #721179 ASSIGNED   - Ryan Rix - Review Request: rubygem-extlib - Support library for DataMapper and Merb
 #915009 ASSIGNED   - Ricky Elrod - Review Request: rubygem-ruby-pcap - Ruby interface to LBL Packet Capture library.
 #894524 ASSIGNED   - Nobody's working on this, feel free to take it - Review Request: rubygem-openshift-origin-console - OpenShift Origin Management Console
-#960047 ASSIGNED   - Nobody's working on this, feel free to take it - Review Request: rubygem-annotate - Annotates Rails Models, routes, fixtures etc based on the database schema
 #668822 ASSIGNED   - Minnikhanov - Review Request: rubygem-memcache-client - A Ruby library for accessing memcached
 #894482 ASSIGNED   - Michael Scherer - Review Request: rubygem-openshift-origin-auth-kerberos - OpenShift plugin for kerberos auth service
 #976468 ASSIGNED   - Marcelo Barbosa - Review Request: rubygem-teamocil - Easy session, window and pane layouts for tmux

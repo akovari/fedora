@@ -62,7 +62,7 @@ def find_common(gitlab_gemlist, fedora_gemlist):
   set(['sass_rails', 'sass'])
   '''
   
-  return set(gitlab_gemlist) & set(fedora_gemlist) 
+  return sorted(set(gitlab_gemlist) & set(fedora_gemlist))
 
 def find_missing(gitlab_gems, common_gems):
   """lists -> list
@@ -78,7 +78,7 @@ def find_missing(gitlab_gems, common_gems):
     if gem not in common_gems:
       missing_gems.append(gem)
 
-  return missing_gems
+  return sorted(missing_gems)
 
 def single_gem_dependencies(gem_name):
   '''List dependencies of a gem
@@ -117,7 +117,7 @@ def main():
   fedora_gems_file = '/home/axil/fedora/gitlab-deps/rubygems_fedora'
   fedora_gems = fedora_gems_list(fedora_gems_file)
   gitlab_gems_file = '/home/axil/fedora/gitlab-deps/gitlab53-gems'
-  gitlab_gems_list = gitlab_gems_runtime(gitlab_gems_file).keys()
+  gitlab_gems_list = sorted(gitlab_gems_runtime(gitlab_gems_file).keys())
   common = find_common(gitlab_gems_list, fedora_gems)
   missing_gems = find_missing(gitlab_gems_list, fedora_gems)
 
