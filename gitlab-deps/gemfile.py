@@ -30,7 +30,7 @@ def gitlab_gems_all():
 def gitlab_gems_runtime(gitlab_gems):
   '''file -> list
 
-  Returns a sorted list of Gitlab's dependencies included in Gemfile.lock.
+  Returns a sorted list of Gitlab's runtime dependencies.
 
   '''
   gitlab_dict = {}
