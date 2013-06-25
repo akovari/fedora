@@ -139,8 +139,8 @@ def main():
   print 'Gitlab uses', len(gitlab_gems_list), 'runtime gems.'
   print 'Fedora has packaged', len(fedora_gems), 'gems.'
   print 'There are', len(common), 'common gems.'
-  print 'There should be packaged', len(gitlab_gems_list) - len(common), 'gems.'
-  print 'Fedora will have' , round((len(gitlab_gems_list) - len(common))/float(len(fedora_gems))*100,2), '% more ruby packages, that is', len(common)+len(fedora_gems), 'gems in total.'
+  print 'There should be packaged', len(missing_gems), 'gems.'
+  print 'Fedora will have' , round(len(missing_gems)/float(len(fedora_gems))*100,2), '% more ruby packages, that is', len(missing_gems)+len(fedora_gems), 'gems in total.'
   
 if __name__ == '__main__':
   main()
