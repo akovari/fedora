@@ -17,6 +17,7 @@ BuildRequires: ruby(release)
 BuildRequires: rubygems-devel 
 BuildRequires: rubygem(minitest) 
 BuildRequires: redis
+BuildRequires: nmap-ncat
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
@@ -56,11 +57,14 @@ pushd .%{gem_instdir}
 ## Start a testing redis server instance
 /usr/sbin/redis-server test/test.conf
 
+## Set locale because two tests fail in mock
+## https://gist.github.com/axilleas/5851323
+LANG=en_US.utf8 
+
 testrb -Ilib test/*_test.rb
 
-## Kill running redis-server
+## Kill redis-server
 kill -INT `cat test/db/redis.pid`
-
 popd
 
 %install

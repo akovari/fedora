@@ -1,0 +1,45 @@
+INFO: mock.py version 1.1.32 starting...
+Start: init plugins
+INFO: selinux enabled
+Finish: init plugins
+Start: run
+INFO: Start(../SRPMS/rubygem-redis-3.0.4-1.fc19.src.rpm)  Config(fedora-19-x86_64)
+Start: lock buildroot
+Start: clean chroot
+INFO: chroot (/var/lib/mock/fedora-19-x86_64) unlocked and deleted
+Finish: clean chroot
+Finish: lock buildroot
+Start: chroot init
+Start: lock buildroot
+Mock Version: 1.1.32
+INFO: Mock Version: 1.1.32
+INFO: calling preinit hooks
+INFO: enabled root cache
+Start: unpacking root cache
+Finish: unpacking root cache
+INFO: enabled yum cache
+Start: cleaning yum metadata
+Finish: cleaning yum metadata
+INFO: enabled ccache
+Start: device setup
+Finish: device setup
+Start: yum update
+Start: Outputting list of available packages
+Finish: Outputting list of available packages
+Finish: yum update
+Finish: lock buildroot
+Finish: chroot init
+INFO: Installed packages:
+Start: build phase for rubygem-redis-3.0.4-1.fc19.src.rpm
+Start: device setup
+Finish: device setup
+Start: build setup for rubygem-redis-3.0.4-1.fc19.src.rpm
+Finish: build setup for rubygem-redis-3.0.4-1.fc19.src.rpm
+Start: rpmbuild -bb rubygem-redis-3.0.4-1.fc19.src.rpm
+Start: Outputting list of installed packages
+Finish: Outputting list of installed packages
+Finish: rpmbuild -bb rubygem-redis-3.0.4-1.fc19.src.rpm
+Finish: build phase for rubygem-redis-3.0.4-1.fc19.src.rpm
+INFO: Done(../SRPMS/rubygem-redis-3.0.4-1.fc19.src.rpm) Config(default) 1 minutes 16 seconds
+INFO: Results and/or logs in: /var/lib/mock/fedora-19-x86_64/result
+Finish: run

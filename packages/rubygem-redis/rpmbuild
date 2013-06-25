@@ -1,4 +1,4 @@
-Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.L59JOQ
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.ukA8vZ
 + umask 022
 + cd /home/axil/rpmbuild/BUILD
 + gem unpack /home/axil/rpmbuild/SOURCES/redis-3.0.4.gem
@@ -8,7 +8,7 @@ Unpacked gem: '/home/axil/rpmbuild/BUILD/redis-3.0.4'
 + /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
 + gem spec /home/axil/rpmbuild/SOURCES/redis-3.0.4.gem -l --ruby
 + exit 0
-Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.ecxIz9
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.k3S0hT
 + umask 022
 + cd /home/axil/rpmbuild/BUILD
 + cd redis-3.0.4
@@ -124,7 +124,7 @@ Parsing sources...
 Done installing documentation for redis after 2 seconds
 1 gem installed
 + exit 0
-Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.DvkzHB
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.w0LMIV
 + umask 022
 + cd /home/axil/rpmbuild/BUILD
 + '[' /home/axil/rpmbuild/BUILDROOT/rubygem-redis-3.0.4-1.fc19.x86_64 '!=' / ']'
@@ -144,24 +144,25 @@ Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.DvkzHB
 + /usr/lib/rpm/brp-python-bytecompile /usr/bin/python 1
 + /usr/lib/rpm/redhat/brp-python-hardlink
 + /usr/lib/rpm/redhat/brp-java-repack-jars
-Executing(%check): /bin/sh -e /var/tmp/rpm-tmp.epw064
+Executing(%check): /bin/sh -e /var/tmp/rpm-tmp.86nOpZ
 + umask 022
 + cd /home/axil/rpmbuild/BUILD
 + cd redis-3.0.4
 + pushd ./usr/share/gems/gems/redis-3.0.4
 ~/rpmbuild/BUILD/redis-3.0.4/usr/share/gems/gems/redis-3.0.4 ~/rpmbuild/BUILD/redis-3.0.4
 + /usr/sbin/redis-server test/test.conf
++ LANG=en_US.utf8
 + testrb -Ilib test/blocking_commands_test.rb test/command_map_test.rb test/commands_on_hashes_test.rb test/commands_on_lists_test.rb test/commands_on_sets_test.rb test/commands_on_sorted_sets_test.rb test/commands_on_strings_test.rb test/commands_on_value_types_test.rb test/connection_handling_test.rb test/distributed_blocking_commands_test.rb test/distributed_commands_on_hashes_test.rb test/distributed_commands_on_lists_test.rb test/distributed_commands_on_sets_test.rb test/distributed_commands_on_sorted_sets_test.rb test/distributed_commands_on_strings_test.rb test/distributed_commands_on_value_types_test.rb test/distributed_commands_requiring_clustering_test.rb test/distributed_connection_handling_test.rb test/distributed_internals_test.rb test/distributed_key_tags_test.rb test/distributed_persistence_control_commands_test.rb test/distributed_publish_subscribe_test.rb test/distributed_remote_server_control_commands_test.rb test/distributed_scripting_test.rb test/distributed_sorting_test.rb test/distributed_test.rb test/distributed_transactions_test.rb test/encoding_test.rb test/error_replies_test.rb test/helper_test.rb test/internals_test.rb test/persistence_control_commands_test.rb test/pipelining_commands_test.rb test/publish_subscribe_test.rb test/remote_server_control_commands_test.rb test/scripting_test.rb test/sorting_test.rb test/thread_safety_test.rb test/transactions_test.rb test/unknown_commands_test.rb test/url_param_test.rb
 Run options: -Ilib
 
 # Running tests:
 
-Finished tests in 13.504759s, 35.9133 tests/s, 132.9902 assertions/s.                                             
+Finished tests in 13.988475s, 34.6714 tests/s, 128.3914 assertions/s.                                             
 485 tests, 1796 assertions, 0 failures, 0 errors, 0 skips
 
 ruby -v: ruby 2.0.0p195 (2013-05-14 revision 40734) [x86_64-linux]
 ++ cat test/db/redis.pid
-+ kill -INT 24417
++ kill -INT 17169
 + popd
 ~/rpmbuild/BUILD/redis-3.0.4
 + exit 0
@@ -175,7 +176,7 @@ Checking for unpackaged file(s): /usr/lib/rpm/check-files /home/axil/rpmbuild/BU
 Wrote: /home/axil/rpmbuild/SRPMS/rubygem-redis-3.0.4-1.fc19.src.rpm
 Wrote: /home/axil/rpmbuild/RPMS/noarch/rubygem-redis-3.0.4-1.fc19.noarch.rpm
 Wrote: /home/axil/rpmbuild/RPMS/noarch/rubygem-redis-doc-3.0.4-1.fc19.noarch.rpm
-Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.PxCk1k
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.pUZeFE
 + umask 022
 + cd /home/axil/rpmbuild/BUILD
 + cd redis-3.0.4
