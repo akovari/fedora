@@ -38,6 +38,7 @@ mysql2
 net-ldap
 nokogiri
 oauth
+pg
 polyglot
 rack
 rack-accept
@@ -51,6 +52,7 @@ railties
 rake
 rdoc
 redcarpet
+redis
 ref
 sass
 sass-rails

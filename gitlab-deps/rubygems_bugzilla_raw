@@ -39,7 +39,6 @@
 #843153 ASSIGNED   - Vít Ondruch - Review Request: rubygem-sfcc - Ruby bindings for SBLIM client library
 #974889 ASSIGNED   - Vít Ondruch - Review Request: rubygem-mysql2 - A simple, fast Mysql library for Ruby, binding to libmysql
 #739478 ASSIGNED   - Vít Ondruch - Review request: rubygem-jammit - Industrial Strength Asset Packaging for Rails
-#975339 ASSIGNED   - Vít Ondruch - Review Request: rubygem-gssapi - A FFI wrapper around the system GSSAPI library
 #967335 ASSIGNED   - Vít Ondruch - Review Request: rubygem-dotenv - Loads environment variables from `.env`
 #967334 ASSIGNED   - Vít Ondruch - Review Request: rubygem-connection_pool - Generic connection pool for Ruby
 #960047 ASSIGNED   - Vít Ondruch - Review Request: rubygem-annotate - Annotates Rails Models, routes, fixtures etc based on the database schema

@@ -24,7 +24,6 @@ gdk3
 gem-open
 git-up
 gli
-gssapi
 gtk3
 guard
 hoe-yard

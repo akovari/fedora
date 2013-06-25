@@ -48,7 +48,6 @@ posix-spawn
 puma
 pygments.rb
 pyu-ruby-sasl
-redis
 redis-actionpack
 redis-activesupport
 redis-namespace
