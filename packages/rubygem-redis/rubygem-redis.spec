@@ -58,7 +58,7 @@ pushd .%{gem_instdir}
 /usr/sbin/redis-server test/test.conf
 
 ## Set locale because two tests fail in mock
-## https://gist.github.com/axilleas/5851323
+## https://github.com/redis/redis-rb/issues/345
 LANG=en_US.utf8 
 
 testrb -Ilib test/*_test.rb
