@@ -3,7 +3,7 @@
 
 Name: rubygem-%{gem_name}
 Version: 3.0.4
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: A Ruby client library for Redis
 Group: Development/Languages
 License: MIT
@@ -11,7 +11,6 @@ URL: https://github.com/redis/redis-rb
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
 Requires: ruby(rubygems) 
-Requires: redis
 BuildRequires: ruby 
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel 
@@ -54,10 +53,15 @@ gem build %{gem_name}.gemspec
 %check
 pushd .%{gem_instdir}
 
+## Redis doesn't support IPv6 yet and localhost resolves to IPv6 address.
+## Use 127.0.0.1 instead or else it hangs while testing.
+## https://bugzilla.redhat.com/show_bug.cgi?id=978284#c2
+sed -i "s/localhost/127.0.0.1/" test/publish_subscribe_test.rb
+
 ## Start a testing redis server instance
 /usr/sbin/redis-server test/test.conf
 
-## Set locale because two tests fail in mock
+## Set locale because two tests fail in mock.
 ## https://github.com/redis/redis-rb/issues/345
 LANG=en_US.utf8 
 
@@ -86,10 +90,16 @@ cp -pa .%{gem_dir}/* \
 %doc %{gem_instdir}/README.md
 %{gem_instdir}/%{gem_name}.gemspec
 %{gem_instdir}/Rakefile
+%{gem_instdir}/benchmarking/
 %{gem_instdir}/examples/
 %{gem_instdir}/test/
-%{gem_instdir}/benchmarking/
+%exclude %{gem_instdir}/test/db/.gitignore
 
 %changelog
+* Thu Jun 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 3.0.4-2
+- Fix failing test
+- Remove redis from Requires
+- Exclude dot file
+
 * Sun Jun 23 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 3.0.4-1
 - Initial package
