@@ -80,6 +80,18 @@ def find_missing(gitlab_gems, common_gems):
 
   return sorted(missing_gems)
 
+def upstream_gem_version(gem_name):
+  '''string -> string
+  
+  Returns the version of a Ruby gem taken from rubygems.org API
+  '''
+
+  url = 'https://rubygems.org/api/v1/gems/%s.json' % gem_name
+  js = json.load(urllib2.urlopen(url))
+  version = js['version']
+
+  return version
+
 def single_gem_dependencies(gem_name):
   '''List dependencies of a gem
   '''
@@ -88,8 +100,8 @@ def single_gem_dependencies(gem_name):
   js = json.load(urllib2.urlopen(url))
   deps = js['dependencies']
   runtime_deps = deps['runtime']
-  dev_deps = ['development']
-  
+  dev_deps =deps['development']
+
   return runtime_deps
 
 def bugzilla_sort_gems(rubygems_bugzilla_raw):
