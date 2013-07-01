@@ -13,6 +13,7 @@ chosen-rails
 closure-compiler
 code_analyzer
 connection_pool
+datagrepper
 debug_inspector
 domain_name
 dotenv
@@ -40,6 +41,7 @@ paint
 parslet
 prototype-rails
 rails_best_practices
+redis
 rspec-puppet
 ruby-pcap
 ruby-shadow
@@ -52,6 +54,7 @@ strong_parameters
 teamocil
 thread_safe
 tidy_ffi
+time-lord
 timers
 unf
 unf_ext

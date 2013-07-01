@@ -13,8 +13,8 @@ then
 fi
 
 echo 'Searching Fedora repositories...'
-#touch $fedora_gems_raw
-yum search all rubygem | awk '{print $1}' > $fedora_gems_raw
+#reposync --repoid=fedora,updates,updates-testing
+yum search all rubygem | awk '{print $1}' | sort -k1 > $fedora_gems_raw
 
 # Striping uneeded symbols and the rubygem- prefix
 sed -e 's/rubygem-//g' -e 's/.noarch//g' -e 's/.x86_64//g' -e '/-doc/d' -e '/i686/d' -e '/==/d' -e '/:/d' < $fedora_gems_raw > $fedora_gems
@@ -29,6 +29,9 @@ bugzilla query --product=fedora --bug_status=new,assigned --component='Package R
 
 bugzilla query --product=fedora --bug_status=new,assigned --component='Package Review' --short_desc='rubygem-' | sort -k2 -r > $bugzilla_gems_raw
 
+# Crappy sorting
 cat $bugzilla_gems >> $fedora_gems
+cat $fedora_gems | sort -k1 > /tmp/rubygems
+cat /tmp/rubygems > $fedora_gems
 
 echo 'Done!'

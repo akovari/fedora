@@ -4,6 +4,7 @@
 #786636 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-unicorn - Rack HTTP server for fast clients and Unix
 #904639 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-unf - Wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
 #892314 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-unf_ext -  Unicode Normalization Form support library for CRuby
+#979749 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-time-lord - Managing concepts of time and space in Ruby
 #796112 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-tidy_ffi - Tidy library interface via FFI
 #961375 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-thread_safe - Thread-safe collections and utilities for Ruby
 #880203 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-strong_parameters - Permitted and required parameters for Action Pack
@@ -24,6 +25,7 @@
 #967338 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-font-awesome-sass-rails - Font Awesome in SASS for Rails
 #967337 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-faraday - HTTP/REST API client library
 #904640 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-domain_name - Domain Name manipulation library for Ruby
+#979752 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-datagrepper - Ruby interface to the Datagrepper API
 #725733 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-closure-compiler - Ruby Wrapper for the Google Closure Compiler
 #823352 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-chef - a client for the Chef config management system
 #771297 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-bluecloth - A Ruby implementation of John Gruber's Markdown
@@ -37,6 +39,7 @@
 #823351 ASSIGNED   - Vít Ondruch - Review Request: rubygem-yajl-ruby - Ruby C bindings to YAJL - a JSON stream-based parser
 #969877 ASSIGNED   - Vít Ondruch - Review Request: rubygem-timers - Pure Ruby one-shot and periodic timers
 #843153 ASSIGNED   - Vít Ondruch - Review Request: rubygem-sfcc - Ruby bindings for SBLIM client library
+#978284 ASSIGNED   - Vít Ondruch - Review Request: rubygem-redis - A Ruby client library for Redis
 #974889 ASSIGNED   - Vít Ondruch - Review Request: rubygem-mysql2 - A simple, fast Mysql library for Ruby, binding to libmysql
 #739478 ASSIGNED   - Vít Ondruch - Review request: rubygem-jammit - Industrial Strength Asset Packaging for Rails
 #967335 ASSIGNED   - Vít Ondruch - Review Request: rubygem-dotenv - Loads environment variables from `.env`

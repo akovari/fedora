@@ -38,6 +38,7 @@ mysql2
 net-ldap
 nokogiri
 oauth
+orm_adapter
 pg
 polyglot
 rack
