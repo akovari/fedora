@@ -4,9 +4,9 @@
 Name: rubygem-%{gem_name}
 Version: 2.0.1
 Release: 1%{?dist}
-Summary: A simple, fast, and highly concurrent HTTP 1.1 server for Ruby web apps
+Summary: Puma is a simple, fast, and highly concurrent HTTP 1.1 server for Ruby web applications
 Group: Development/Languages
-License: MIT
+License: BSD
 URL: http://puma.io
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
@@ -68,6 +68,10 @@ gem build %{gem_name}.gemspec
 # by default, so that we can move it into the buildroot in %%install
 %gem_install
 
+%check
+pushd .
+
+
 %install
 mkdir -p %{buildroot}%{gem_dir}
 cp -pa .%{gem_dir}/* \
@@ -75,7 +79,7 @@ cp -pa .%{gem_dir}/* \
 
 mkdir -p %{buildroot}%{gem_extdir_mri}/lib
 # TODO: move the extensions
-mv %{buildroot}%{gem_instdir}/lib/shared_object.so %{buildroot}%{gem_extdir_mri}/lib/
+#mv %{buildroot}%{gem_instdir}/lib/shared_object.so %{buildroot}%{gem_extdir_mri}/lib/
 
 mkdir -p %{buildroot}%{_bindir}
 cp -pa .%{_bindir}/* \
@@ -85,20 +89,27 @@ find %{buildroot}%{gem_instdir}/bin -type f | xargs chmod a+x
 
 %files
 %dir %{gem_instdir}
+%{gem_instdir}/bin
 %{_bindir}/puma
 %{_bindir}/pumactl
-%{gem_instdir}/bin
 %{gem_libdir}
-%exclude %{gem_instdir}/ext
 %{gem_extdir_mri}
-%exclude %{gem_cache}
 %{gem_spec}
+%{doc} %{gem_instdir}/LICENSE
+%{doc} %{gem_instdir}/COPYING
+%exclude %{gem_instdir}/.*
+%exclude %{gem_instdir}/ext
+%exclude %{gem_cache}
 
 %files doc
 %doc %{gem_docdir}
 %doc %{gem_instdir}/History.txt
 %doc %{gem_instdir}/Manifest.txt
+%doc %{gem_instdir}/Gemfile
+%doc %{gem_instdir}/README.md
+%doc %{gem_instdir}/Rakefile
+
 
 %changelog
-* Tue May 28 2013 axilleas - 2.0.1-1
+* Tue May 28 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 2.0.1-1
 - Initial package
