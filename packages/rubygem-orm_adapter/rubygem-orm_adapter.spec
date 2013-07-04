@@ -4,7 +4,7 @@
 Name: rubygem-%{gem_name}
 Version: 0.4.0
 Release: 1%{?dist}
-Summary: orm_adapter provides a single point of entry for using basic features of popular ruby ORMs.  Its target audience is gem authors who want to support many ruby ORMs
+Summary: Provides a single point of entry for using basic features of ruby ORMs
 Group: Development/Languages
 License: MIT
 URL: http://github.com/ianwhite/orm_adapter
@@ -50,10 +50,13 @@ gem build %{gem_name}.gemspec
 %gem_install
 
 %install
+
 mkdir -p %{buildroot}%{gem_dir}
 cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
+## Remove shebang
+sed -i 1d %{buildroot}%{gem_instdir}/Rakefile
 
 %check
 pushd .%{gem_instdir}
@@ -73,7 +76,7 @@ popd
 %doc %{gem_instdir}/README.rdoc
 %doc %{gem_instdir}/History.txt
 %{gem_instdir}/spec/
-%attr(755, root, root) %{gem_instdir}/Rakefile
+%{gem_instdir}/Rakefile
 %{gem_instdir}/Gemfile
 %{gem_instdir}/Gemfile.lock.development
 %{gem_instdir}/%{gem_name}.gemspec

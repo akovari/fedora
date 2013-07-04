@@ -1,0 +1,7 @@
+rubygem-orm_adapter-doc.noarch: W: spelling-error Summary(en_US) orm -> or, om, rm
+The value of this tag appears to be misspelled. Please double-check.
+
+rubygem-orm_adapter-doc.noarch: W: spelling-error %description -l en_US orm -> or, om, rm
+The value of this tag appears to be misspelled. Please double-check.
+
+3 packages and 0 specfiles checked; 0 errors, 2 warnings.
