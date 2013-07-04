@@ -17,7 +17,7 @@ echo 'Searching Fedora repositories...'
 yum search all rubygem | awk '{print $1}' | sort -k1 > $fedora_gems_raw
 
 # Striping uneeded symbols and the rubygem- prefix
-sed -e 's/rubygem-//g' -e 's/.noarch//g' -e 's/.x86_64//g' -e '/-doc/d' -e '/i686/d' -e '/==/d' -e '/:/d' < $fedora_gems_raw > $fedora_gems
+sed -e 's/rubygem-//g' -e 's/.noarch//g' -e 's/.x86_64//g' -e '/-doc/d' -e '/i686/d' -e '/-devel/d' -e '/==/d' -e '/:/d' < $fedora_gems_raw > $fedora_gems
 
 echo 'Done!'
 
