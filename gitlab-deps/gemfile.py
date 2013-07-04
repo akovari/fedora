@@ -3,6 +3,8 @@
 import json
 import urllib2
 import re
+import os
+import pkgwat.api
 
 def gitlab_gems_all():
   '''file -> list
@@ -27,32 +29,54 @@ def gitlab_gems_all():
   
   return sorted(gitlab_gemlist)
 
-def gitlab_gems_runtime(gitlab_gems):
-  '''file -> list
+def gitlab_gems_runtime(gitlab_list):
+  '''file -> dictionary
 
   Returns a sorted list of Gitlab's runtime dependencies.
 
   '''
   gitlab_dict = {}
-  with open(gitlab_gems, 'r') as gitlab_file:
+  with open(gitlab_list, 'r') as gitlab_file:
     for line in gitlab_file.readlines():
-      gem_name = '-'.join(line.split('-')[:-1])
-      gem_ver = line.split('-')[-1].strip('\n')
-      gitlab_dict[gem_name] = gem_ver
+      name = '-'.join(line.split('-')[:-1])
+      version = line.split('-')[-1].strip('\n')
+      gitlab_dict[name] = version
   
   return gitlab_dict
 
-def fedora_gems_list(fedora_gems_file):
-  '''file -> list
+def fedora_gems_rawhide(file):
+  '''file -> dictionary
 
   Returns a list of rubygems currently packaged in Fedora.
   '''
-  
-  with open(fedora_gems_file, 'r') as f:
-    gemlist = f.read().split('\n')
+  fedora_dict = {}
 
-  return list(set(gemlist))
+  gemlist = gitlab_gems_runtime(file).keys()
+
+  for gem in gemlist:
+    search = pkgwat.api.releases('rubygem-%s' % gem)
+    version = search['rows'][0]['stable_version'].split('-')[0]
+    fedora_dict[gem] = version
+
+  return fedora_dict
   
+def upstream_gems(gitlab_list):
+  '''string -> string
+  
+  Returns the version of a Ruby gem taken from rubygems.org API
+  '''
+  upstream_dict = {}
+  gitlab_list = gitlab_gems_runtime(gitlab_list).keys()
+  
+  for gem in gitlab_list:
+    url = 'https://rubygems.org/api/v1/gems/%s.json' % gem
+    js = json.load(urllib2.urlopen(url))
+    version = js['version']
+    upstream_dict[gem] = version
+
+  return upstream_dict
+
+
 def find_common(gitlab_gemlist, fedora_gemlist):
   ''' lists -> set
 
@@ -80,18 +104,6 @@ def find_missing(gitlab_gems, common_gems):
 
   return sorted(missing_gems)
 
-def upstream_gem_version(gem_name):
-  '''string -> string
-  
-  Returns the version of a Ruby gem taken from rubygems.org API
-  '''
-
-  url = 'https://rubygems.org/api/v1/gems/%s.json' % gem_name
-  js = json.load(urllib2.urlopen(url))
-  version = js['version']
-
-  return version
-
 def single_gem_dependencies(gem_name):
   '''List dependencies of a gem
   '''
@@ -104,7 +116,7 @@ def single_gem_dependencies(gem_name):
 
   return runtime_deps
 
-def bugzilla_sort_gems(rubygems_bugzilla_raw):
+def bugzilla_gems(rubygems_bugzilla_raw):
   """Returns a dictionary with rubygems pending review for Fedora 
   and their status.
 
@@ -124,30 +136,61 @@ def bugzilla_sort_gems(rubygems_bugzilla_raw):
 
   return bz_dict
 
+
 def main():
   
-  fedora_gems_file = '/home/axil/fedora/gitlab-deps/rubygems_fedora'
-  fedora_gems = fedora_gems_list(fedora_gems_file)
-  gitlab_gems_file = '/home/axil/fedora/gitlab-deps/gitlab53-gems'
-  gitlab_gems_list = sorted(gitlab_gems_runtime(gitlab_gems_file).keys())
-  common = find_common(gitlab_gems_list, fedora_gems)
-  missing_gems = find_missing(gitlab_gems_list, fedora_gems)
+  gitlab_gems_file = os.path.realpath('gitlab53-gems')
+  fedora_gems_file = os.path.realpath('rubygems_fedora')
+  rubygems_gitlab = os.path.realpath('rubygems_gitlab')
+  rubygems_missing = os.path.realpath('rubygems_missing')
+  rubygems_common = os.path.realpath('rubygems_common')
+  
+  print 'Populating GitLab dictionary...'
+  gitlab = gitlab_gems_runtime(gitlab_gems_file)
+  
+  print 'Populating Fedora dictionary...'
+  fedora = fedora_gems_rawhide(gitlab_gems_file)
 
-  rubygems_gitlab = '/home/axil/fedora/gitlab-deps/rubygems_gitlab'
+  print 'Populating upstream dictionary...'
+  upstream = upstream_gems(gitlab_gems_file)
+
+
+  print 'Writing GitLab gems to file...'
+  gitlab_gems_list = gitlab.keys()
   with open(rubygems_gitlab, 'w') as f:
     for rubygem in gitlab_gems_list:
       f.write(rubygem + '\n')
   
-  rubygems_missing = '/home/axil/fedora/gitlab-deps/rubygems_missing'
+  print 'Writing missing gems to file...'
+  missing_gems = find_missing(gitlab_gems_list, sorted(fedora.keys()))
   with open(rubygems_missing, 'w') as f:
     for rubygem in missing_gems:
       f.write(rubygem + '\n')
   
-  rubygems_common = '/home/axil/fedora/gitlab-deps/rubygems_common'
+  print 'Calculating common gems...'
+  common = find_common(gitlab_gems_list, sorted(fedora.keys()))
   with open(rubygems_common, 'w') as f:
     for rubygem in common:
       f.write(rubygem + '\n')
   
+  # Write to a file the gem versions table, wiki styled
+  
+  print 'Populating versions dictionary...'
+  versions = {}
+  for gem in gitlab.keys():
+    versions[gem] = [gitlab[gem], fedora[gem], upstream[gem]]
+  
+  versions_table = os.path.realpath('wiki_version_table')
+  if os.path.isfile(versions_table):
+    print 'Removing old wiki table'
+    os.rename(versions_table, versions_table + '.old' )
+  
+  print 'Writing versions to a wiki table...'
+  with open(versions_table, 'a') as f:
+    for gem in sorted(gitlab.keys()):
+      f.write('|-' + '\n' + '|' + gem + '\n' + '|' + versions[gem][0] + '\n' + '|' + versions[gem][1] + '\n' + '|' + versions[gem][2] + '\n')
+  print 'Done!'
+
   print 'Gitlab uses', len(gitlab_gems_list), 'runtime gems.'
   print 'Fedora has packaged', len(fedora_gems), 'gems.'
   print 'There are', len(common), 'common gems.'
