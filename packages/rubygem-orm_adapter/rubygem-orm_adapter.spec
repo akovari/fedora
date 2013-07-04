@@ -60,6 +60,8 @@ sed -i 1d %{buildroot}%{gem_instdir}/Rakefile
 
 %check
 pushd .%{gem_instdir}
+## We are missing some tests because of missing packages:
+## mongo_mapper, dm-core
 rspec spec/
 popd
 
