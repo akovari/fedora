@@ -44,14 +44,14 @@ def gitlab_gems_runtime(gitlab_list):
   
   return gitlab_dict
 
-def fedora_gems_rawhide(file):
+def fedora_gems_rawhide(filename):
   '''file -> dictionary
 
   Returns a list of rubygems currently packaged in Fedora.
   '''
   fedora_dict = {}
 
-  gemlist = gitlab_gems_runtime(file).keys()
+  gemlist = gitlab_gems_runtime(filename).keys()
 
   for gem in gemlist:
     search = pkgwat.api.releases('rubygem-%s' % gem)
@@ -149,36 +149,40 @@ def main():
   gitlab = gitlab_gems_runtime(gitlab_gems_file)
   
   print 'Populating Fedora dictionary...'
-  fedora = fedora_gems_rawhide(gitlab_gems_file)
+  fedora_common_gitlab = fedora_gems_rawhide(gitlab_gems_file)
 
   print 'Populating upstream dictionary...'
   upstream = upstream_gems(gitlab_gems_file)
 
+  # Fedora gem packages that are in repos as list
+  fedora = []
+  with open(fedora_gems_file,'r') as f:
+    for gem in f.readlines():
+      fedora.append(gem.strip('\n'))
 
   print 'Writing GitLab gems to file...'
-  gitlab_gems_list = gitlab.keys()
   with open(rubygems_gitlab, 'w') as f:
-    for rubygem in gitlab_gems_list:
-      f.write(rubygem + '\n')
+    for gem in gitlab.keys():
+      f.write(gem + '\n')
+  
+  print 'Writing common gems to file...'
+  common = find_common(gitlab.keys(), fedora)
+  with open(rubygems_common, 'w') as f:
+    for gem in common:
+      f.write(gem + '\n')
   
   print 'Writing missing gems to file...'
-  missing_gems = find_missing(gitlab_gems_list, sorted(fedora.keys()))
+  missing_gems = find_missing(gitlab.keys(), common)
   with open(rubygems_missing, 'w') as f:
-    for rubygem in missing_gems:
-      f.write(rubygem + '\n')
-  
-  print 'Calculating common gems...'
-  common = find_common(gitlab_gems_list, sorted(fedora.keys()))
-  with open(rubygems_common, 'w') as f:
-    for rubygem in common:
-      f.write(rubygem + '\n')
+    for gem in missing_gems:
+      f.write(gem + '\n')
   
   # Write to a file the gem versions table, wiki styled
   
   print 'Populating versions dictionary...'
   versions = {}
   for gem in gitlab.keys():
-    versions[gem] = [gitlab[gem], fedora[gem], upstream[gem]]
+    versions[gem] = [gitlab[gem], fedora_common_gitlab[gem], upstream[gem]]
   
   versions_table = os.path.realpath('wiki_version_table')
   if os.path.isfile(versions_table):
@@ -191,11 +195,11 @@ def main():
       f.write('|-' + '\n' + '|' + gem + '\n' + '|' + versions[gem][0] + '\n' + '|' + versions[gem][1] + '\n' + '|' + versions[gem][2] + '\n')
   print 'Done!'
 
-  print 'Gitlab uses', len(gitlab_gems_list), 'runtime gems.'
-  print 'Fedora has packaged', len(fedora_gems), 'gems.'
+  print 'Gitlab uses', len(gitlab.keys()), 'runtime gems.'
+  print 'Fedora has packaged', len(fedora), 'gems.'
   print 'There are', len(common), 'common gems.'
   print 'There should be packaged', len(missing_gems), 'gems.'
-  print 'Fedora will have' , round(len(missing_gems)/float(len(fedora_gems))*100,2), '% more ruby packages, that is', len(missing_gems)+len(fedora_gems), 'gems in total.'
+  print 'Fedora will have' , round(len(missing_gems)/float(len(fedora))*100,2), '% more ruby packages, that is', len(missing_gems)+len(fedora), 'gems in total.'
   
 if __name__ == '__main__':
   main()
