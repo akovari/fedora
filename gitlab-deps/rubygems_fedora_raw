@@ -274,6 +274,7 @@ rubygem-delorean-doc.noarch
 rubygem-delorean.noarch
 rubygem-deltacloud-client-doc.noarch
 rubygem-deltacloud-client.noarch
+rubygem-devise.noarch
 rubygem-diff-lcs-doc.noarch
 rubygem-diff-lcs.noarch
 rubygem-ditz.noarch
@@ -366,6 +367,8 @@ rubygem-goocanvas.x86_64
 rubygem-grit-doc.noarch
 rubygem-grit.noarch
 rubygem-gruff.noarch
+rubygem-gssapi-doc.noarch
+rubygem-gssapi.noarch
 rubygem-gstreamer-devel.i686
 rubygem-gstreamer-devel.x86_64
 rubygem-gstreamer-doc.x86_64
@@ -656,7 +659,6 @@ rubygem-recaptcha.noarch
 rubygem-redcarpet-doc.noarch
 rubygem-redcarpet.x86_64
 rubygem-RedCloth.x86_64
-rubygem-redis.noarch
 rubygem-ref-doc.noarch
 rubygem-ref.noarch
 rubygem-regin-doc.noarch

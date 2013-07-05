@@ -35,7 +35,6 @@
 #929005 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-awestruct - A framework for creating static HTML sites
 #917074 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-angular-rails - Helpers for angularjs in a rails project
 #961364 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-activerecord-deprecated_finders - This gem contains deprecated finder APIs extracted from Active Record
-#674085 NEW        - Miroslav Suchý - Review Request: rubygem-virt - Simplied interface to use ruby the libvirt library
 #823351 ASSIGNED   - Vít Ondruch - Review Request: rubygem-yajl-ruby - Ruby C bindings to YAJL - a JSON stream-based parser
 #969877 ASSIGNED   - Vít Ondruch - Review Request: rubygem-timers - Pure Ruby one-shot and periodic timers
 #843153 ASSIGNED   - Vít Ondruch - Review Request: rubygem-sfcc - Ruby bindings for SBLIM client library

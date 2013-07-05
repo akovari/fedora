@@ -5,7 +5,6 @@ celluloid
 charlock_holmes
 d3_rails
 descendants_tracker
-devise
 enumerize
 escape_utils
 faraday_middleware

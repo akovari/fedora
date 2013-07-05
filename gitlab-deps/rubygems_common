@@ -15,6 +15,7 @@ coffee-script
 coffee-script-source
 colored
 connection_pool
+devise
 diff-lcs
 dotenv
 erubis

@@ -24,7 +24,6 @@ aruba
 Ascii85
 asciidoctor
 atk
-atk-devel
 attributes
 audited
 audited-activerecord
@@ -49,7 +48,6 @@ bundler
 bundler_ext
 bunny
 cairo
-cairo-devel
 capybara
 chardet
 chef
@@ -92,6 +90,7 @@ delayed_job
 delayed_job_active_record
 delorean
 deltacloud-client
+devise
 diff-lcs
 ditz
 dnsruby
@@ -129,7 +128,6 @@ formtastic
 fssm
 gdk3
 gdk_pixbuf2
-gdk_pixbuf2-devel
 gem2rpm
 gemcutter
 gem-nice-install
@@ -140,25 +138,19 @@ gettext_i18n_rails
 gherkin
 ghost
 gio2
-gio2-devel
 git
 git-up
 gli
 glib2
-glib2-devel
 gobject-introspection
-gobject-introspection-devel
 goocanvas
-goocanvas-devel
 grit
 gruff
+gssapi
 gstreamer
-gstreamer-devel
 gtk2
-gtk2-devel
 gtk3
 gtksourceview2
-gtksourceview2-devel
 guard
 haml
 haml-rails
@@ -271,12 +263,10 @@ orm_adapter
 paint
 pam
 pango
-pango-devel
 paranoia
 parseconfig
 parslet
 passenger
-passenger-devel
 passenger-native
 passenger-native-libs
 pathname2
@@ -291,7 +281,6 @@ plist
 polyglot
 POpen4
 poppler
-poppler-devel
 pr_geohash
 progressbar
 prototype-rails
@@ -326,7 +315,6 @@ recaptcha
 redcarpet
 RedCloth
 redis
-redis
 ref
 regin
 rerun
@@ -348,7 +336,6 @@ rspec-mocks
 rspec-puppet
 rspec-rails
 rsvg2
-rsvg2-devel
 rubeyond
 rubigen
 ruby2ruby
@@ -357,7 +344,6 @@ ruby-debug19
 ruby-debug-base19
 rubyforge
 rubygems
-rubygems-devel
 ruby-hmac
 RubyInline
 ruby-libvirt
@@ -441,9 +427,7 @@ uuid
 uuidtools
 vagrant
 vcr
-virt
 vte
-vte-devel
 warden
 webmock
 webrat
