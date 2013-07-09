@@ -6,9 +6,10 @@ Version: 2.3.2.0
 Release: 1%{?dist}
 Summary: Twitter's Bootstrap, converted to Sass and ready to drop into Rails or Compass
 Group: Development/Languages
-License: Apache 2.0
+License: ASL 2.0
 URL: http://github.com/thomas-mcdonald/bootstrap-sass
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
+# cd ~/rpmbuild/SOURCES
 # git clone https://github.com/thomas-mcdonald/bootstrap-sass.git && cd bootstrap-sass
 # git checkout v2.3.2.0
 # tar -czf ../rubygem-bootstrap-sass-2.3.2.0-test.tgz test/
@@ -20,6 +21,7 @@ Requires: rubygem(sass) < 4
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel
 BuildRequires: rubygem(sass)
+BuildRequires: rubygem(test-unit)
 BuildRequires: ruby 
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
@@ -41,9 +43,9 @@ gem unpack %{SOURCE0}
 
 %setup -q -D -T -n  %{gem_name}-%{version}
 
-tar -xvzf %{SOURCE1} 
-
 gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
+
+tar xvzf %{SOURCE1}
 
 %build
 # Create the gem as gem install only works on a gem file
@@ -59,9 +61,11 @@ cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
 %check
+## There is a pending request to include tests in gem
+## https://github.com/thomas-mcdonald/bootstrap-sass/issues/321
+cp -r test .%{gem_instdir}
 pushd .%{gem_instdir}
-cp -pr test .%{gem_instdir}
-testrb -Ilib test/*_test.rb
+testrb2 -Ilib test/
 rm -rf test/
 popd
 
