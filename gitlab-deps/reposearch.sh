@@ -23,15 +23,12 @@ echo 'Done!'
 
 # Install python-bugzilla first
 echo 'Searching Bugzilla for Review Requests...'
+# Save raw query
+bugzilla query --product=fedora --bug_status=new,assigned --component='Package Review' --short_desc='rubygem-' | sort -k2 -r > $bugzilla_gems_raw
+
+# Keep names only
 bugzilla query --product=fedora --bug_status=new,assigned --component='Package Review' --short_desc='rubygem-' \
   | awk 'BEGIN { FS = " - " } ; { print $3 }' | awk 'BEGIN { FS = ":" } ; { print $2 }' | sed -e 's/ rubygem-//' \
   | sort -k1 > $bugzilla_gems
-
-bugzilla query --product=fedora --bug_status=new,assigned --component='Package Review' --short_desc='rubygem-' | sort -k2 -r > $bugzilla_gems_raw
-
-# Crappy sorting
-cat $bugzilla_gems >> $fedora_gems
-cat $fedora_gems | sort -k1 > /tmp/rubygems
-cat /tmp/rubygems > $fedora_gems
 
 echo 'Done!'
