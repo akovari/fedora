@@ -129,8 +129,6 @@
 :
 :
 ...:
-...:
-...:
 rubygem-abrt-doc.noarch
 rubygem-abrt.noarch
 rubygem-abstract-doc.noarch
@@ -274,7 +272,6 @@ rubygem-delorean-doc.noarch
 rubygem-delorean.noarch
 rubygem-deltacloud-client-doc.noarch
 rubygem-deltacloud-client.noarch
-rubygem-devise.noarch
 rubygem-diff-lcs-doc.noarch
 rubygem-diff-lcs.noarch
 rubygem-ditz.noarch
@@ -562,7 +559,6 @@ rubygem-openstack-quantum-client-doc.noarch
 rubygem-openstack-quantum-client.noarch
 rubygem-origin-doc.noarch
 rubygem-origin.noarch
-rubygem-orm_adapter.noarch
 rubygem-pam.x86_64
 rubygem-pango-devel.i686
 rubygem-pango-devel.x86_64

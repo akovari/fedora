@@ -7,6 +7,7 @@
 #979749 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-time-lord - Managing concepts of time and space in Ruby
 #796112 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-tidy_ffi - Tidy library interface via FFI
 #961375 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-thread_safe - Thread-safe collections and utilities for Ruby
+#976468 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-teamocil - Easy session, window and pane layouts for tmux
 #880203 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-strong_parameters - Permitted and required parameters for Action Pack
 #949317 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-serialport - Ruby library that provide class for RS232 serail port
 #927374 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-rugged - Ruby binding to the libgit2 linkable library
@@ -50,7 +51,6 @@
 #894524 ASSIGNED   - Nobody's working on this, feel free to take it - Review Request: rubygem-openshift-origin-console - OpenShift Origin Management Console
 #668822 ASSIGNED   - Minnikhanov - Review Request: rubygem-memcache-client - A Ruby library for accessing memcached
 #894482 ASSIGNED   - Michael Scherer - Review Request: rubygem-openshift-origin-auth-kerberos - OpenShift plugin for kerberos auth service
-#976468 ASSIGNED   - Marcelo Barbosa - Review Request: rubygem-teamocil - Easy session, window and pane layouts for tmux
 #642601 ASSIGNED   - Jozef Zigmund - Review Request: rubygem-uuid - Ruby UUID generator based on RFC 4122
 #839649 ASSIGNED   - Josef Stribny - Review Request: rubygem-rails_best_practices - a code metric tool for rails codes, written in Ruby.
 #960064 ASSIGNED   - Josef Stribny - Review Request: rubygem-lumberjack - A fast logging utility

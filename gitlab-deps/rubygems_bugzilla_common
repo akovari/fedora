@@ -1,0 +1,10 @@
+mysql2
+redis
+faraday
+chosen-rails
+backports
+stringex
+dotenv
+yajl-ruby
+connection_pool
+timers
