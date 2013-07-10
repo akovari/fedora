@@ -186,28 +186,12 @@ def populate_dicts():
   Returns a tuple with populated dictionaries in this order: 
   gitlab, fedora, upstream, all
   '''
-  toolbar_width = 40
-
-  # setup toolbar
-  sys.stdout.write("[%s]" % (" " * toolbar_width))
-  sys.stdout.flush()
-  sys.stdout.write("\b" * (toolbar_width+1)) # return to start of line, after '['
-
-  for i in xrange(toolbar_width):
-    time.sleep(0.1) 
     
-    print 'Populating dictionaries, this might take some time.'
-    gitlab = gitlab_gems_runtime(gitlab_gems_file)
-    fedora = fedora_gems_rawhide(gitlab_gems_file)
-    upstream = find_upstream_gems(gitlab_gems_file)
+  print 'Populating dictionaries, this might take some time.'
+  gitlab = gitlab_gems_runtime(gitlab_gems_file)
+  fedora = fedora_gems_rawhide(gitlab_gems_file)
+  upstream = find_upstream_gems(gitlab_gems_file)
     
-    # do real work here
-    # update the bar
-    sys.stdout.write("-")
-    sys.stdout.flush()
-
-  sys.stdout.write("\n")
-  
   # Write results to json
   dict_to_json(gitlab, gitlab_json)
   dict_to_json(fedora, fedora_json)
