@@ -7,6 +7,20 @@ import os
 import time
 import pkgwat.api
 
+# Declare files
+
+gitlab_gems_file = os.path.realpath('gitlab53-gems')
+rubygems_fedora = os.path.realpath('rubygems_fedora')
+rubygems_gitlab = os.path.realpath('rubygems_gitlab')
+rubygems_missing = os.path.realpath('rubygems_missing')
+rubygems_common = os.path.realpath('rubygems_common')
+gitlab_json = os.path.realpath('gitlab.json')
+fedora_json = os.path.realpath('fedora.json')
+upstream_json = os.path.realpath('upstream.json')
+gems_versions_json = os.path.realpath('all_versions.json')
+gems_bugzilla = os.path.realpath('rubygems_bugzilla_raw')
+gems_bugzilla_common = os.path.realpath('rubygems_bugzilla_common')
+
 
 def gitlab_gems_all():
   '''file -> list
@@ -156,7 +170,7 @@ def created_before_than(filename, days_ago):
 
   return file_creation > time_ago
 
-def write_to_json_file(dictionary, json_name):
+def dict_to_json(dictionary, json_name):
   
   with open(json_name, 'w') as j:
     j.write(json.dumps(dictionary))
@@ -205,22 +219,11 @@ def wiki_table():
 
 def main():
   
-  gitlab_gems_file = os.path.realpath('gitlab53-gems')
-  fedora_gems_file = os.path.realpath('rubygems_fedora')
-  rubygems_gitlab = os.path.realpath('rubygems_gitlab')
-  rubygems_missing = os.path.realpath('rubygems_missing')
-  rubygems_common = os.path.realpath('rubygems_common')
-  gitlab_json = os.path.realpath('gitlab.json')
-  fedora_json = os.path.realpath('fedora.json')
-  upstream_json = os.path.realpath('upstream.json')
-  gems_versions_json = os.path.realpath('all_versions.json')
-  gems_bugzilla = os.path.realpath('rubygems_bugzilla_raw')
-  gems_bugzilla_common = os.path.realpath('rubygems_bugzilla_common')
   gitlab = gitlab_gems_runtime(gitlab_gems_file)
-
+  
   # All Fedora gem packages that are in repos as list
   fedora = []
-  with open(fedora_gems_file,'r') as f:
+  with open(rubygems_fedora,'r') as f:
     for gem in f.readlines():
       fedora.append(gem.strip('\n'))
 
