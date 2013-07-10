@@ -11,17 +11,21 @@ URL: https://github.com/rgrove/sanitize/
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 # git clone https://github.com/rgrove/sanitize.git && cd sanitize
 # git checkout v2.0.4
-# tar -czf ../rubygem-sanitize-1.2.0-test.tgz test/
+# tar -czf ../rubygem-sanitize-2.0.4-test.tgz test/
 Source1: %{name}-%{version}-test.tgz
 Requires: ruby(release)
 Requires: ruby(rubygems) >= 1.2.0
-Requires: rubygem(nokogiri) => 1.6.0
+# TODO
+# Test if this works with 1.5.9 or update Fedora's package to 1.6.0 
+Requires: rubygem(nokogiri) => 1.5.9
 Requires: rubygem(nokogiri) < 1.7
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel >= 1.2.0
 BuildRequires: ruby >= 1.9.2
 BuildRequires: rubygem(minitest)
-BuildRequires: rubygem(nokogiri) => 1.6.0
+# Upstream requires => 1.6.0 which is not yet packaged
+# Tests pass with 1.5.9 without a problem
+BuildRequires: rubygem(nokogiri) => 1.5.9
 BuildRequires: rubygem(nokogiri) < 1.7
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
@@ -45,7 +49,7 @@ gem unpack %{SOURCE0}
 
 %setup -q -D -T -n  %{gem_name}-%{version}
 
-tar -xzf %{SOURCE1}
+tar -xvzf %{SOURCE1}
 
 gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 
@@ -63,15 +67,12 @@ cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
 %check
-
 ## Upstream will include tests in next version
 ## https://github.com/rgrove/sanitize/issues/76
-cp -pr test/ ./%{gem_instdir}
+cp -pr test/ .%{gem_instdir}
 pushd .%{gem_instdir}
-
 testrb -Ilib test/test_sanitize.rb
 rm -rf test
-
 popd
 
 %files
@@ -83,8 +84,8 @@ popd
 
 %files doc
 %doc %{gem_docdir}
-%doc ${gem_instdir}/README.rdoc
-%doc ${gem_instdir}/HISTORY.md
+%doc %{gem_instdir}/README.rdoc
+%doc %{gem_instdir}/HISTORY.md
 
 %changelog
 * Thu Jun 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 2.0.4-1
