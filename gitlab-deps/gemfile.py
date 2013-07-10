@@ -4,6 +4,7 @@ import json
 import urllib2
 import re
 import os
+import sys
 import time
 import pkgwat.api
 
@@ -20,6 +21,7 @@ upstream_json = os.path.realpath('upstream.json')
 gems_versions_json = os.path.realpath('all_versions.json')
 gems_bugzilla = os.path.realpath('rubygems_bugzilla_raw')
 gems_bugzilla_common = os.path.realpath('rubygems_bugzilla_common')
+versions_table = os.path.realpath('wiki_table_versions')
 
 
 def gitlab_gems_all():
@@ -171,7 +173,10 @@ def created_before_than(filename, days_ago):
   return file_creation > time_ago
 
 def dict_to_json(dictionary, json_name):
-  
+  ''' dict -> file
+  Convert a given dictionary to json and save it in a file named:
+  json_name. You must complete the .json yourself. 
+  '''
   with open(json_name, 'w') as j:
     j.write(json.dumps(dictionary))
 
@@ -181,13 +186,32 @@ def populate_dicts():
   Returns a tuple with populated dictionaries in this order: 
   gitlab, fedora, upstream, all
   '''
+  toolbar_width = 40
 
-  gitlab_gems_file = os.path.realpath('gitlab53-gems')
+  # setup toolbar
+  sys.stdout.write("[%s]" % (" " * toolbar_width))
+  sys.stdout.flush()
+  sys.stdout.write("\b" * (toolbar_width+1)) # return to start of line, after '['
 
-  print 'Populating dictionaries, this might take some time.'
-  gitlab = gitlab_gems_runtime(gitlab_gems_file)
-  fedora = fedora_gems_rawhide(gitlab_gems_file)
-  upstream = find_upstream_gems(gitlab_gems_file)
+  for i in xrange(toolbar_width):
+    time.sleep(0.1) 
+    
+    print 'Populating dictionaries, this might take some time.'
+    gitlab = gitlab_gems_runtime(gitlab_gems_file)
+    fedora = fedora_gems_rawhide(gitlab_gems_file)
+    upstream = find_upstream_gems(gitlab_gems_file)
+    
+    # do real work here
+    # update the bar
+    sys.stdout.write("-")
+    sys.stdout.flush()
+
+  sys.stdout.write("\n")
+  
+  # Write results to json
+  dict_to_json(gitlab, gitlab_json)
+  dict_to_json(fedora, fedora_json)
+  dict_to_json(upstream, upstream_json)
 
   return (gitlab, fedora, upstream)
 
@@ -209,7 +233,8 @@ def wiki_table():
   Wikify the versions of gems among gitlab, fedora and upstream.
   Results go in https://fedoraproject.org/wiki/User:Axilleas/GitLab
   '''
-  versions_table = os.path.realpath('wiki_table_versions')
+  gitlab = gitlab_gems_runtime(gitlab_gems_file)
+  versions = all_versions_dict()
 
   with open(versions_table, 'a') as f:
     for gem in sorted(gitlab.keys()):
