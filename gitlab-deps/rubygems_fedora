@@ -306,6 +306,7 @@ ruby_parser
 ruby-rc4
 rubyzip
 rufus-scheduler
+sanitize
 sass
 sass-rails
 scoped_search

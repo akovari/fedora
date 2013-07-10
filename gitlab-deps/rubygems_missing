@@ -62,7 +62,6 @@ redis-rack
 redis-rails
 redis-store
 rubyntlm
-sanitize
 seed-fu
 select2-rails
 settingslogic

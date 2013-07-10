@@ -6,6 +6,7 @@ backports
 barista
 blankslate
 bluecloth
+bootstrap-sass
 bundler_ext
 chardet
 chef

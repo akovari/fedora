@@ -1,4 +1,5 @@
 mysql2
+bootstrap-sass
 redis
 faraday
 chosen-rails

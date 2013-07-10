@@ -29,6 +29,7 @@
 #979752 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-datagrepper - Ruby interface to the Datagrepper API
 #725733 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-closure-compiler - Ruby Wrapper for the Google Closure Compiler
 #823352 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-chef - a client for the Chef config management system
+#982679 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-bootstrap-sass - Twitter's Bootstrap, converted to Sass and ready to drop into Rails or Compass
 #771297 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-bluecloth - A Ruby implementation of John Gruber's Markdown
 #771316 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-blankslate - Ruby gem which provides an abstract base class with no predefined methods
 #738465 NEW        - Nobody's working on this, feel free to take it - Review Request: rubygem-barista - Simple, integrated support for CoffeeScript in Rack and Rails applications

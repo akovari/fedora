@@ -47,6 +47,7 @@ rake
 rdoc
 redcarpet
 ref
+sanitize
 sass
 sass-rails
 sinatra
