@@ -7,7 +7,7 @@ Release: 1%{?dist}
 Summary: pkgwat checks your gems to against Fedora/EPEL
 Group: Development/Languages
 License: 
-URL: 
+URL: https://github.com/daviddavis/pkgwat
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
 Requires: ruby(rubygems) 
