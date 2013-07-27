@@ -3,7 +3,7 @@
 
 Name: rubygem-%{gem_name}
 Version: 2.0.6
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Whitelist-based HTML sanitizer
 Group: Development/Languages
 License: MIT
@@ -16,7 +16,7 @@ BuildRequires: ruby(release)
 BuildRequires: rubygems-devel >= 1.2.0
 BuildRequires: ruby >= 1.9.2
 BuildRequires: rubygem(minitest)
-BuildRequires: rubygem(nokogiri) >= 1.4.4
+BuildRequires: rubygem(nokogiri)
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
@@ -57,7 +57,6 @@ cp -pa .%{gem_dir}/* \
 %check
 pushd .%{gem_instdir}
 testrb -Ilib test/test_sanitize.rb
-rm -rf test
 popd
 
 %files
@@ -74,5 +73,9 @@ popd
 %{gem_instdir}/test/
 
 %changelog
+* Sat Jul 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 2.0.6-2
+- Tests don't need to be removed
+- Fix BR nokogiri to match upstream gemspec
+
 * Sat Jul 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 2.0.6-1
 - Initial package
