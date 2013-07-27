@@ -16,7 +16,7 @@ BuildRequires: ruby(release)
 BuildRequires: rubygems-devel >= 1.2.0
 BuildRequires: ruby >= 1.9.2
 BuildRequires: rubygem(minitest)
-BuildRequires: rubygem(nokogiri)
+BuildRequires: rubygem(nokogiri) >= 1.4.4
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
