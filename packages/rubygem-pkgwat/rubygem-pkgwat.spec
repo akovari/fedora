@@ -52,6 +52,11 @@ gem build %{gem_name}.gemspec
 # by default, so that we can move it into the buildroot in %%install
 %gem_install
 
+# remove some unecessary files
+pushd .%{gem_instdir}
+rm Gemfile
+rm %{gem_name}.gemspec
+
 %install
 mkdir -p %{buildroot}%{gem_dir}
 cp -pa .%{gem_dir}/* \
@@ -62,12 +67,15 @@ cp -pa .%{gem_dir}/* \
 
 %files
 %dir %{gem_instdir}
+%exclude %{gem_instdir}/.*
 %{gem_libdir}
 %exclude %{gem_cache}
 %{gem_spec}
 
 %files doc
 %doc %{gem_docdir}
+%doc %{gem_instdir}/README.md
+%doc %{gem_instdir}/Rakefile
 
 %changelog
 * Thu Jun 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.1.0-1
