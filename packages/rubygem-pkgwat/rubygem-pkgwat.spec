@@ -2,23 +2,30 @@
 %global gem_name pkgwat
 
 Name: rubygem-%{gem_name}
-Version: 0.1.0
+Version: 0.1.2
 Release: 1%{?dist}
 Summary: pkgwat checks your gems to against Fedora/EPEL
 Group: Development/Languages
-License: 
+License: MIT
 URL: https://github.com/daviddavis/pkgwat
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
 Requires: ruby(rubygems) 
-Requires: rubygem(nokogiri) = 1.5.5
+Requires: rubygem(nokogiri)
 Requires: rubygem(rake) 
 Requires: rubygem(thor) 
-Requires: rubygem(json) = 1.6.5
+Requires: rubygem(json)
 Requires: rubygem(sanitize) 
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel 
 BuildRequires: ruby 
+BuildRequires: rubygem(minitest)
+BuildRequires: rubygem(vcr)
+BuildRequires: rubygem(webmock)
+# sanitize packaging in progress. https://bugzilla.redhat.com/989132
+#BuildRequires: rubygem(sanitize)
+# debugger required for tests. Not yet packaged.
+#BuildRequires: rubygem(debugger)
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
@@ -62,11 +69,17 @@ mkdir -p %{buildroot}%{gem_dir}
 cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
-
+%check
+pushd .%{gem_instdir}
+# The tests require the "sanitize" and "debugger" gems.
+# These are not yet in Fedora.
+#testrb -Ilib test/pkgwat_test.rb
+popd
 
 
 %files
 %dir %{gem_instdir}
+%doc %{gem_instdir}/LICENSE
 %exclude %{gem_instdir}/.*
 %{gem_libdir}
 %exclude %{gem_cache}
@@ -76,7 +89,14 @@ cp -pa .%{gem_dir}/* \
 %doc %{gem_docdir}
 %doc %{gem_instdir}/README.md
 %{gem_instdir}/Rakefile
+%{gem_instdir}/test
 
 %changelog
+* Sat Jul 27 2013 Ken Dreyer <ktdreyer@ktdreyer.com> - 0.1.2-1
+- Update to 0.1.2
+- Drop nokogiri and json strict version requirements
+- Set License field
+- Package tests and prepare for enabling
+
 * Thu Jun 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.1.0-1
 - Initial package
