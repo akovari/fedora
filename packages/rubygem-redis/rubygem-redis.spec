@@ -80,9 +80,10 @@ cp -pa .%{gem_dir}/* \
 %dir %{gem_instdir}
 %{gem_libdir}
 %doc %{gem_instdir}/LICENSE
+%{gem_spec}
 %exclude %{gem_cache}
 %exclude %{gem_instdir}/.*
-%{gem_spec}
+%exclude %{gem_instdir}/test/db/.gitignore
 
 %files doc
 %doc %{gem_docdir}
@@ -93,7 +94,6 @@ cp -pa .%{gem_dir}/* \
 %{gem_instdir}/benchmarking/
 %{gem_instdir}/examples/
 %{gem_instdir}/test/
-%exclude %{gem_instdir}/test/db/.gitignore
 
 %changelog
 * Thu Jun 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 3.0.4-2
