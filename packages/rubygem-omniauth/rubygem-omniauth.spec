@@ -17,7 +17,8 @@ Requires: rubygem(rack)
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel >= 1.3.6
 BuildRequires: ruby
-BuildRequires: rubygem(rack)
+BuildRequires: rubygem(hashie)
+BuildRequires: rubygem(rack-test)
 BuildRequires: rubygem(rspec)
 BuildRequires: rubygem(simplecov)
 BuildArch: noarch
