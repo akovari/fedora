@@ -3,7 +3,7 @@
 
 Name: rubygem-%{gem_name}
 Version: 0.6.9.4
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Character encoding detection, brought to you by ICU
 Group: Development/Languages
 License: MIT
@@ -38,6 +38,9 @@ gem unpack %{SOURCE0}
 
 gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 
+# Remove unecessary bundler dependency
+sed -i '/bundler/d' test/helper.rb
+
 %build
 # Create the gem as gem install only works on a gem file
 gem build %{gem_name}.gemspec
@@ -62,9 +65,8 @@ chmod +x %{buildroot}/%{gem_instdir}/test/fixtures/laholator.py
 
 %check
 pushd .%{gem_instdir}
-# Remove unecessary bundler dependency
-sed -i '/bundler/d' test/helper.rb
 # Set locale to UTF due to failing tests in mock
+# https://github.com/brianmario/charlock_holmes/issues/39
 LANG=en_US.utf8
 testrb -Ilib test/*.rb
 popd
@@ -90,5 +92,9 @@ popd
 
 
 %changelog
+* Sun Aug 04 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.6.9.4-2
+- Move bundler removal to %prep
+- Include github issue of failing tests
+
 * Mon Jul 22 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.6.9.4-1
 - Initial package
