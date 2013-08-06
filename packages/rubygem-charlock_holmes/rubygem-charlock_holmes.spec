@@ -18,6 +18,10 @@ BuildRequires: libicu-devel
 BuildRequires: rubygem(minitest) 
 Provides: rubygem(%{gem_name}) = %{version}
 
+# The Python code in the tests subdirectory references /usr/bin/env. Filter
+# this from RPM's autorequires.
+%global __requires_exclude ^/usr/bin/env$
+
 %description
 
 Character encoding detecting library for Ruby using ICU
