@@ -3,7 +3,7 @@
 
 Name: rubygem-%{gem_name}
 Version: 0.6.9.4
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Character encoding detection, brought to you by ICU
 Group: Development/Languages
 License: MIT
@@ -18,12 +18,11 @@ BuildRequires: libicu-devel
 BuildRequires: rubygem(minitest) 
 Provides: rubygem(%{gem_name}) = %{version}
 
-# The Python code in the tests subdirectory references /usr/bin/env. Filter
-# this from RPM's autorequires.
+# The Python code in the tests subdirectory references /usr/bin/env. 
+# Filter this from RPM's autorequires.
 %global __requires_exclude ^/usr/bin/env$
 
 %description
-
 Character encoding detecting library for Ruby using ICU
 
 %package doc
@@ -96,6 +95,10 @@ popd
 
 
 %changelog
+* Wed Aug 07 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.6.9.4-3
+- Filter /usr/bin/env from RPM's autorequires
+- Removed extra newline from description
+
 * Sun Aug 04 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.6.9.4-2
 - Move bundler removal to %prep
 - Include github issue of failing tests
