@@ -2,27 +2,27 @@
 %global gem_name bootstrap-sass
 
 Name: rubygem-%{gem_name}
-Version: 2.3.2.0
+Version: 2.3.2.2
 Release: 1%{?dist}
 Summary: Twitter's Bootstrap, converted to Sass and ready to drop into Rails or Compass
 Group: Development/Languages
+# All source code has the same license as Twitter's Bootstrap
+# which is ASLv2.0.
+# The license of Glyphicons (CC BF 3.0) is not included.
+#
+# CC BY 3.0: http://creativecommons.org/licenses/by/3.0/
 License: ASL 2.0
 URL: http://github.com/thomas-mcdonald/bootstrap-sass
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
-# cd ~/rpmbuild/SOURCES
-# git clone https://github.com/thomas-mcdonald/bootstrap-sass.git && cd bootstrap-sass
-# git checkout v2.3.2.0
-# tar -czf ../rubygem-bootstrap-sass-2.3.2.0-test.tgz test/
-Source1: %{name}-%{version}-test.tgz
 Requires: ruby(release)
-Requires: ruby(rubygems) 
+Requires: ruby(rubygems)
 Requires: rubygem(sass) => 3.2
 Requires: rubygem(sass) < 4
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel
 BuildRequires: rubygem(sass)
 BuildRequires: rubygem(test-unit)
-BuildRequires: ruby 
+BuildRequires: ruby
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
@@ -45,8 +45,6 @@ gem unpack %{SOURCE0}
 
 gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 
-tar xvzf %{SOURCE1}
-
 %build
 # Create the gem as gem install only works on a gem file
 gem build %{gem_name}.gemspec
@@ -61,27 +59,35 @@ cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
 %check
-## There is a pending request to include tests in gem
-## https://github.com/thomas-mcdonald/bootstrap-sass/issues/321
-cp -r test .%{gem_instdir}
 pushd .%{gem_instdir}
 testrb2 -Ilib test/
-rm -rf test/
 popd
 
 %files
 %dir %{gem_instdir}
 %{gem_libdir}
-%exclude %{gem_cache}
 %{gem_spec}
 %doc %{gem_instdir}/LICENSE
 %{gem_instdir}/vendor/
 %{gem_instdir}/templates/
+%exclude %{gem_cache}
+%exclude %{gem_instdir}/.*
 
 %files doc
 %doc %{gem_docdir}
 %doc %{gem_instdir}/README.md
+%doc %{gem_instdir}/CHANGELOG.md
+%doc %{gem_instdir}/CONTRIBUTING.md
+%{gem_instdir}/test/
+%{gem_instdir}/Gemfile
+%{gem_instdir}/Rakefile
+%{gem_instdir}/asseturl.patch
+%{gem_instdir}/update-bootstrap.sh
+%{gem_instdir}/%{gem_name}.gemspec
 
 %changelog
-* Sun Jun 16 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 2.3.2.0-1
+* Mon Sep 02 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 2.3.2.2-1
+- Update to 2.3.2.2
+
+* Sun Jun 16 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 2.3.2.1-1
 - Initial package
