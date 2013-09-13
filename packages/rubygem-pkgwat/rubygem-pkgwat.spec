@@ -3,12 +3,15 @@
 
 Name: rubygem-%{gem_name}
 Version: 0.1.3
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: pkgwat checks your gems to against Fedora/EPEL
 Group: Development/Languages
 License: MIT
 URL: https://github.com/daviddavis/pkgwat
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
+# Remove hard dependency on debugger gem.
+# https://github.com/daviddavis/pkgwat/pull/16
+Patch0: rubygem-pkgwat-0.1.3-debugger.patch
 Requires: ruby(release)
 Requires: ruby(rubygems) 
 Requires: rubygem(nokogiri) => 1.4
@@ -24,8 +27,7 @@ BuildRequires: ruby
 BuildRequires: rubygem(minitest)
 BuildRequires: rubygem(vcr)
 BuildRequires: rubygem(webmock)
-# sanitize packaging in progress. https://bugzilla.redhat.com/989132
-#BuildRequires: rubygem(sanitize)
+BuildRequires: rubygem(sanitize)
 # debugger required for tests. Not yet packaged.
 #BuildRequires: rubygem(debugger)
 BuildArch: noarch
@@ -53,6 +55,9 @@ gem unpack %{SOURCE0}
 
 gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 
+# Remove hard dependency on debugger gem
+%patch0 -p1
+
 %build
 # Create the gem as gem install only works on a gem file
 gem build %{gem_name}.gemspec
@@ -73,9 +78,7 @@ cp -pa .%{gem_dir}/* \
 
 %check
 pushd .%{gem_instdir}
-# The tests require the "sanitize" and "debugger" gems.
-# These are not yet in Fedora.
-#testrb -Ilib test/pkgwat_test.rb
+  testrb -Ilib test/pkgwat_test.rb
 popd
 
 
@@ -94,6 +97,11 @@ popd
 %{gem_instdir}/test
 
 %changelog
+* Thu Sep 12 2013 Ken Dreyer <ktdreyer@ktdreyer.com> - 0.1.3-2
+- rubygem-sanitize is now in Fedora. Enable it in the BR.
+- Patch to remove hard dep on debugger gem
+- Enable test suite
+
 * Mon Jul 29 2013 Ken Dreyer <ktdreyer@ktdreyer.com> - 0.1.3-1
 - Update to 0.1.3
 - Update nokogiri and json version requirements to match gemspec

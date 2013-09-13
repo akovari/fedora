@@ -1,0 +1,33 @@
+From 0e39dc5a7e9c29155b00381a7f1a819e649f544c Mon Sep 17 00:00:00 2001
+From: Ken Dreyer <ktdreyer@ktdreyer.com>
+Date: Thu, 12 Sep 2013 19:07:38 -0600
+Subject: [PATCH] gracefully handle missing debugger gem
+
+Debugger is not yet packaged for Fedora. If we do not have debugger
+installed, we should be able to continue with the rest of the test
+suite.
+---
+ test/test_helper.rb | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/test/test_helper.rb b/test/test_helper.rb
+index a846715..b0d7430 100644
+--- a/test/test_helper.rb
++++ b/test/test_helper.rb
+@@ -2,7 +2,12 @@ ENV['RACK_ENV'] = 'test'
+ require 'minitest/autorun'
+ require 'pkgwat'
+ require 'vcr'
+-require 'debugger'
++begin
++  require 'debugger'
++rescue LoadError
++  warn "warning: debugger gem not found; skipping debugger support"
++end
++
+ 
+ mode = ENV['mode'] ? ENV['mode'] : :none
+ 
+-- 
+1.8.3.1
+
