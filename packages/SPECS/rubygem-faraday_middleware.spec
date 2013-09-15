@@ -1,29 +1,28 @@
-# Generated from orm_adapter-0.4.0.gem by gem2rpm -*- rpm-spec -*-
-%global gem_name orm_adapter
+# Generated from faraday_middleware-0.9.0.gem by gem2rpm -*- rpm-spec -*-
+%global gem_name faraday_middleware
 
 Name: rubygem-%{gem_name}
-Version: 0.4.0
-Release: 2%{?dist}
-Summary: Provides a single point of entry for using basic features of ruby ORMs
+Version: 0.9.0
+Release: 1%{?dist}
+Summary: Various middleware for Faraday
 Group: Development/Languages
 License: MIT
-URL: http://github.com/ianwhite/orm_adapter
+URL: https://github.com/lostisland/faraday_middleware
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
 Requires: ruby(rubygems) >= 1.3.6
+Requires: rubygem(faraday) >= 0.7.4
+Requires: rubygem(faraday) < 0.9
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel >= 1.3.6
-BuildRequires: rubygem(rspec) 
-BuildRequires: rubygem(mongoid) 
-BuildRequires: rubygem(activerecord) 
-BuildRequires: rubygem(sqlite3) 
 BuildRequires: ruby 
+BuildRequires: rubygem(rspec)
+BuildRequires: rubygem(simplecov)
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
 %description
-Provides a single point of entry for using basic features of ruby ORMs
-
+Various middleware for Faraday
 
 %package doc
 Summary: Documentation for %{name}
@@ -45,45 +44,37 @@ gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 # Create the gem as gem install only works on a gem file
 gem build %{gem_name}.gemspec
 
-# %%gem_install compiles any C extensions and installs the gem into ./%%gem_dir
+# %%gem_install compiles any C extensions and installs the gem into ./%gem_dir
 # by default, so that we can move it into the buildroot in %%install
 %gem_install
 
 %install
-
 mkdir -p %{buildroot}%{gem_dir}
 cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
 %check
 pushd .%{gem_instdir}
-## We are missing some tests because of missing packages:
-## mongo_mapper, dm-core
-rspec spec/
+#rspec spec/
 popd
 
 %files
 %dir %{gem_instdir}
 %{gem_libdir}
 %{gem_spec}
-%doc %{gem_instdir}/LICENSE
-%doc %{gem_instdir}/README.rdoc
+%doc %{gem_instdir}/LICENSE.md
 %exclude %{gem_cache}
 %exclude %{gem_instdir}/.*
 
 %files doc
 %doc %{gem_docdir}
-%doc %{gem_instdir}/History.txt
-%{gem_instdir}/spec/
+%doc %{gem_instdir}/CHANGELOG.md
+%doc %{gem_instdir}/README.md
 %{gem_instdir}/Gemfile
-%{gem_instdir}/Gemfile.lock.development
-%exclude %{gem_instdir}/Rakefile
-%exclude %{gem_instdir}/%{gem_name}.gemspec
+%{gem_instdir}/Rakefile
+%{gem_instdir}/%{gem_name}.gemspec
+%{gem_instdir}/spec/
 
 %changelog
-* Tue Aug 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.4.0-2
-- Exclude Rakefile, gemspec
-- Move README to main package
-
-* Sun Jun 30 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.4.0-1
+* Fri Aug 09 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.9.0-1
 - Initial package

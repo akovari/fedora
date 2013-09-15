@@ -1,29 +1,29 @@
-# Generated from orm_adapter-0.4.0.gem by gem2rpm -*- rpm-spec -*-
-%global gem_name orm_adapter
+# Generated from sanitize-2.0.6.gem by gem2rpm -*- rpm-spec -*-
+%global gem_name sanitize
 
 Name: rubygem-%{gem_name}
-Version: 0.4.0
+Version: 2.0.6
 Release: 2%{?dist}
-Summary: Provides a single point of entry for using basic features of ruby ORMs
+Summary: Whitelist-based HTML sanitizer
 Group: Development/Languages
 License: MIT
-URL: http://github.com/ianwhite/orm_adapter
+URL: https://github.com/rgrove/sanitize/
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
-Requires: ruby(rubygems) >= 1.3.6
+Requires: ruby(rubygems) >= 1.2.0
+Requires: rubygem(nokogiri) >= 1.4.4
 BuildRequires: ruby(release)
-BuildRequires: rubygems-devel >= 1.3.6
-BuildRequires: rubygem(rspec) 
-BuildRequires: rubygem(mongoid) 
-BuildRequires: rubygem(activerecord) 
-BuildRequires: rubygem(sqlite3) 
-BuildRequires: ruby 
+BuildRequires: rubygems-devel >= 1.2.0
+BuildRequires: ruby >= 1.9.2
+BuildRequires: rubygem(minitest)
+BuildRequires: rubygem(nokogiri)
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
 %description
-Provides a single point of entry for using basic features of ruby ORMs
-
+Sanitize is a whitelist-based HTML sanitizer. Given a list of acceptable 
+elements and attributes, Sanitize will remove all unacceptable HTML from 
+a string.
 
 %package doc
 Summary: Documentation for %{name}
@@ -50,40 +50,32 @@ gem build %{gem_name}.gemspec
 %gem_install
 
 %install
-
 mkdir -p %{buildroot}%{gem_dir}
 cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
 %check
 pushd .%{gem_instdir}
-## We are missing some tests because of missing packages:
-## mongo_mapper, dm-core
-rspec spec/
+testrb -Ilib test/test_sanitize.rb
 popd
 
 %files
 %dir %{gem_instdir}
 %{gem_libdir}
-%{gem_spec}
 %doc %{gem_instdir}/LICENSE
-%doc %{gem_instdir}/README.rdoc
+%{gem_spec}
 %exclude %{gem_cache}
-%exclude %{gem_instdir}/.*
 
 %files doc
 %doc %{gem_docdir}
-%doc %{gem_instdir}/History.txt
-%{gem_instdir}/spec/
-%{gem_instdir}/Gemfile
-%{gem_instdir}/Gemfile.lock.development
-%exclude %{gem_instdir}/Rakefile
-%exclude %{gem_instdir}/%{gem_name}.gemspec
+%doc %{gem_instdir}/README.rdoc
+%doc %{gem_instdir}/HISTORY.md
+%{gem_instdir}/test/
 
 %changelog
-* Tue Aug 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.4.0-2
-- Exclude Rakefile, gemspec
-- Move README to main package
+* Sat Jul 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 2.0.6-2
+- Tests don't need to be removed
+- Fix BR nokogiri to match upstream gemspec
 
-* Sun Jun 30 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.4.0-1
+* Sat Jul 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 2.0.6-1
 - Initial package

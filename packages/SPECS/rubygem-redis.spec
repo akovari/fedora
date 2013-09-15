@@ -98,7 +98,7 @@ cp -pa .%{gem_dir}/* \
 
 %changelog
 * Tue Sep 03 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 3.0.4-3
-- Move .gitignore exclusion to -doc
+- Move %exclude .gitignore to -doc
 - Reference to redis related bug
 
 * Thu Jun 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 3.0.4-2

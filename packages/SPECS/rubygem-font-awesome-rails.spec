@@ -1,28 +1,28 @@
-# Generated from orm_adapter-0.4.0.gem by gem2rpm -*- rpm-spec -*-
-%global gem_name orm_adapter
+# Generated from font-awesome-rails-3.2.1.2.gem by gem2rpm -*- rpm-spec -*-
+%global gem_name font-awesome-rails
 
 Name: rubygem-%{gem_name}
-Version: 0.4.0
-Release: 2%{?dist}
-Summary: Provides a single point of entry for using basic features of ruby ORMs
+Version: 3.2.1.2
+Release: 1%{?dist}
+Summary: An asset gemification of the font-awesome icon font library.
 Group: Development/Languages
-License: MIT
-URL: http://github.com/ianwhite/orm_adapter
+License: MIT and SIL Open Font License
+URL: https://github.com/bokmann/font-awesome-rails
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
-Requires: ruby(rubygems) >= 1.3.6
+Requires: ruby(rubygems) 
+Requires: rubygem(railties) >= 3.2
+Requires: rubygem(railties) < 5.0
 BuildRequires: ruby(release)
-BuildRequires: rubygems-devel >= 1.3.6
-BuildRequires: rubygem(rspec) 
-BuildRequires: rubygem(mongoid) 
-BuildRequires: rubygem(activerecord) 
-BuildRequires: rubygem(sqlite3) 
+BuildRequires: rubygems-devel 
 BuildRequires: ruby 
+BuildRequires: rubygem(minitest) 
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
 %description
-Provides a single point of entry for using basic features of ruby ORMs
+I like font-awesome. I like the asset pipeline. I like semantic versioning. If
+you do too, you're welcome.
 
 
 %package doc
@@ -50,40 +50,31 @@ gem build %{gem_name}.gemspec
 %gem_install
 
 %install
-
 mkdir -p %{buildroot}%{gem_dir}
 cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
 %check
 pushd .%{gem_instdir}
-## We are missing some tests because of missing packages:
-## mongo_mapper, dm-core
-rspec spec/
+#testrb2 -Ilib test/
 popd
+
 
 %files
 %dir %{gem_instdir}
 %{gem_libdir}
 %{gem_spec}
 %doc %{gem_instdir}/LICENSE
-%doc %{gem_instdir}/README.rdoc
+%{gem_instdir}/app/
 %exclude %{gem_cache}
-%exclude %{gem_instdir}/.*
 
 %files doc
 %doc %{gem_docdir}
-%doc %{gem_instdir}/History.txt
-%{gem_instdir}/spec/
-%{gem_instdir}/Gemfile
-%{gem_instdir}/Gemfile.lock.development
-%exclude %{gem_instdir}/Rakefile
-%exclude %{gem_instdir}/%{gem_name}.gemspec
+%doc %{gem_instdir}/README.md
+%{gem_instdir}/Rakefile
+%{gem_instdir}/test/
+
 
 %changelog
-* Tue Aug 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.4.0-2
-- Exclude Rakefile, gemspec
-- Move README to main package
-
-* Sun Jun 30 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.4.0-1
+* Fri Aug 09 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 3.2.1.2-1
 - Initial package

@@ -1,29 +1,37 @@
-# Generated from orm_adapter-0.4.0.gem by gem2rpm -*- rpm-spec -*-
-%global gem_name orm_adapter
+# Generated from twitter-stream-0.1.16.gem by gem2rpm -*- rpm-spec -*-
+%global gem_name twitter-stream
 
 Name: rubygem-%{gem_name}
-Version: 0.4.0
-Release: 2%{?dist}
-Summary: Provides a single point of entry for using basic features of ruby ORMs
+Version: 0.1.16
+Release: 1%{?dist}
+Summary: Twitter realtime API client
 Group: Development/Languages
 License: MIT
-URL: http://github.com/ianwhite/orm_adapter
+URL: http://github.com/voloko/twitter-stream
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
 Requires: ruby(rubygems) >= 1.3.6
+Requires: rubygem(eventmachine) >= 0.12.8
+# Update simple_oauth dependency
+# https://github.com/voloko/twitter-stream/pull/37
+Requires: rubygem(simple_oauth) => 0.2
+Requires: rubygem(simple_oauth) < 0.3
+Requires: rubygem(http_parser.rb) => 0.5.1
+Requires: rubygem(http_parser.rb) < 0.6
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel >= 1.3.6
-BuildRequires: rubygem(rspec) 
-BuildRequires: rubygem(mongoid) 
-BuildRequires: rubygem(activerecord) 
-BuildRequires: rubygem(sqlite3) 
-BuildRequires: ruby 
+BuildRequires: rubygem(rspec)
+BuildRequires: rubygem(eventmachine)
+BuildRequires: rubygem(simple_oauth)
+BuildRequires: rubygem(http_parser.rb)
+BuildRequires: ruby
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
 %description
-Provides a single point of entry for using basic features of ruby ORMs
-
+Simple Ruby client library for twitter streaming API. Uses EventMachine for
+connection handling. Adheres to twitter's reconnection guidline. JSON format
+only.
 
 %package doc
 Summary: Documentation for %{name}
@@ -50,40 +58,34 @@ gem build %{gem_name}.gemspec
 %gem_install
 
 %install
-
 mkdir -p %{buildroot}%{gem_dir}
 cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
 %check
 pushd .%{gem_instdir}
-## We are missing some tests because of missing packages:
-## mongo_mapper, dm-core
 rspec spec/
 popd
 
 %files
 %dir %{gem_instdir}
 %{gem_libdir}
-%{gem_spec}
 %doc %{gem_instdir}/LICENSE
-%doc %{gem_instdir}/README.rdoc
-%exclude %{gem_cache}
+%{gem_spec}
 %exclude %{gem_instdir}/.*
+%exclude %{gem_cache}
 
 %files doc
 %doc %{gem_docdir}
-%doc %{gem_instdir}/History.txt
-%{gem_instdir}/spec/
+%doc %{gem_instdir}/README.markdown
 %{gem_instdir}/Gemfile
-%{gem_instdir}/Gemfile.lock.development
-%exclude %{gem_instdir}/Rakefile
-%exclude %{gem_instdir}/%{gem_name}.gemspec
+%{gem_instdir}/Rakefile
+%{gem_instdir}/%{gem_name}.gemspec
+%{gem_instdir}/spec/
+%{gem_instdir}/examples/
+%{gem_instdir}/fixtures/
+%exclude %{gem_instdir}/VERSION
 
 %changelog
-* Tue Aug 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.4.0-2
-- Exclude Rakefile, gemspec
-- Move README to main package
-
-* Sun Jun 30 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.4.0-1
+* Wed Aug 14 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.1.16-1
 - Initial package

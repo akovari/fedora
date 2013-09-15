@@ -1,29 +1,30 @@
-# Generated from orm_adapter-0.4.0.gem by gem2rpm -*- rpm-spec -*-
-%global gem_name orm_adapter
+# Generated from faraday-0.8.7.gem by gem2rpm -*- rpm-spec -*-
+%global gem_name faraday
 
 Name: rubygem-%{gem_name}
-Version: 0.4.0
-Release: 2%{?dist}
-Summary: Provides a single point of entry for using basic features of ruby ORMs
+Version: 0.8.8
+Release: 1%{?dist}
+Summary: HTTP/REST API client library
 Group: Development/Languages
 License: MIT
-URL: http://github.com/ianwhite/orm_adapter
+URL: https://github.com/lostisland/faraday
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
 Requires: ruby(rubygems) >= 1.3.6
+Requires: rubygem(multipart-post) => 1.1
+Requires: rubygem(multipart-post) < 2
 BuildRequires: ruby(release)
+BuildRequires: wget
+BuildRequires: rubygem(minitest)
+BuildRequires: rubygem(multipart-post) => 1.1
+BuildRequires: rubygem(multipart-post) < 2
 BuildRequires: rubygems-devel >= 1.3.6
-BuildRequires: rubygem(rspec) 
-BuildRequires: rubygem(mongoid) 
-BuildRequires: rubygem(activerecord) 
-BuildRequires: rubygem(sqlite3) 
-BuildRequires: ruby 
+BuildRequires: ruby
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
 %description
-Provides a single point of entry for using basic features of ruby ORMs
-
+HTTP/REST API client library
 
 %package doc
 Summary: Documentation for %{name}
@@ -50,40 +51,34 @@ gem build %{gem_name}.gemspec
 %gem_install
 
 %install
-
 mkdir -p %{buildroot}%{gem_dir}
 cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
 %check
 pushd .%{gem_instdir}
-## We are missing some tests because of missing packages:
-## mongo_mapper, dm-core
-rspec spec/
+testrb -Ilib test/*_test.rb
 popd
+
 
 %files
 %dir %{gem_instdir}
 %{gem_libdir}
 %{gem_spec}
-%doc %{gem_instdir}/LICENSE
-%doc %{gem_instdir}/README.rdoc
+%doc %{gem_instdir}/LICENSE.md
+%doc %{gem_instdir}/README.md
 %exclude %{gem_cache}
-%exclude %{gem_instdir}/.*
 
 %files doc
 %doc %{gem_docdir}
-%doc %{gem_instdir}/History.txt
-%{gem_instdir}/spec/
+%{gem_instdir}/script
+%{gem_instdir}/test
 %{gem_instdir}/Gemfile
-%{gem_instdir}/Gemfile.lock.development
-%exclude %{gem_instdir}/Rakefile
-%exclude %{gem_instdir}/%{gem_name}.gemspec
+%{gem_instdir}/Rakefile
 
 %changelog
-* Tue Aug 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.4.0-2
-- Exclude Rakefile, gemspec
-- Move README to main package
+* Sun Aug 04 2013 Anuj More - 0.8.8-1
+- From 0.8.7 to 0.8.8
 
-* Sun Jun 30 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.4.0-1
+* Tue May 14 2013 Anuj More - 0.8.7-1
 - Initial package

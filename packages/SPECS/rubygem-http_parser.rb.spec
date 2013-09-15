@@ -1,28 +1,25 @@
-# Generated from orm_adapter-0.4.0.gem by gem2rpm -*- rpm-spec -*-
-%global gem_name orm_adapter
+# Generated from http_parser.rb-0.5.3.gem by gem2rpm -*- rpm-spec -*-
+%global gem_name http_parser.rb
 
 Name: rubygem-%{gem_name}
-Version: 0.4.0
-Release: 2%{?dist}
-Summary: Provides a single point of entry for using basic features of ruby ORMs
+Version: 0.5.3
+Release: 1%{?dist}
+Summary: Simple callback-based HTTP request/response parser
 Group: Development/Languages
 License: MIT
-URL: http://github.com/ianwhite/orm_adapter
+URL: http://github.com/tmm1/http_parser.rb
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
-Requires: ruby(rubygems) >= 1.3.6
+Requires: ruby(rubygems) 
 BuildRequires: ruby(release)
-BuildRequires: rubygems-devel >= 1.3.6
+BuildRequires: rubygems-devel 
+BuildRequires: ruby-devel 
 BuildRequires: rubygem(rspec) 
-BuildRequires: rubygem(mongoid) 
-BuildRequires: rubygem(activerecord) 
-BuildRequires: rubygem(sqlite3) 
-BuildRequires: ruby 
-BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
 %description
-Provides a single point of entry for using basic features of ruby ORMs
+Ruby bindings to http://github.com/ry/http-parser and
+http://github.com/a2800276/http-parser.java
 
 
 %package doc
@@ -50,40 +47,42 @@ gem build %{gem_name}.gemspec
 %gem_install
 
 %install
-
 mkdir -p %{buildroot}%{gem_dir}
 cp -pa .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
 
+mkdir -p %{buildroot}%{gem_extdir_mri}/lib
+mv %{buildroot}%{gem_libdir}/ruby_http_parser.so %{buildroot}%{gem_extdir_mri}/lib/ruby_http_parser.so
+
+# Remove ext
+rm -rf %{buildroot}%{gem_instdir}/ext/
+
 %check
 pushd .%{gem_instdir}
-## We are missing some tests because of missing packages:
-## mongo_mapper, dm-core
+LANG=en_US.utf8
 rspec spec/
 popd
 
 %files
 %dir %{gem_instdir}
 %{gem_libdir}
+%doc %{gem_instdir}/LICENSE-MIT
+%{gem_extdir_mri}
 %{gem_spec}
-%doc %{gem_instdir}/LICENSE
-%doc %{gem_instdir}/README.rdoc
-%exclude %{gem_cache}
 %exclude %{gem_instdir}/.*
+%exclude %{gem_cache}
 
 %files doc
 %doc %{gem_docdir}
-%doc %{gem_instdir}/History.txt
-%{gem_instdir}/spec/
+%doc %{gem_instdir}/README.md
 %{gem_instdir}/Gemfile
-%{gem_instdir}/Gemfile.lock.development
-%exclude %{gem_instdir}/Rakefile
-%exclude %{gem_instdir}/%{gem_name}.gemspec
+%{gem_instdir}/Gemfile.lock
+%{gem_instdir}/Rakefile
+%{gem_instdir}/spec/
+%{gem_instdir}/bench/
+%{gem_instdir}/tasks/
+%{gem_instdir}/%{gem_name}.gemspec
 
 %changelog
-* Tue Aug 27 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.4.0-2
-- Exclude Rakefile, gemspec
-- Move README to main package
-
-* Sun Jun 30 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.4.0-1
+* Sat Aug 10 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.5.3-1
 - Initial package
