@@ -96,6 +96,7 @@ exit 0
 %files
 #%defattr(-,gitlab,gitlab,-)
 %config(noreplace) %{confdir}/%{name}.yml
+%config(noreplace) %{repodir}/.ssh/authorized_keys
 # /var/lib/gitlab
 %dir %{repodir}
 %dir %{repodir}/repositories/
