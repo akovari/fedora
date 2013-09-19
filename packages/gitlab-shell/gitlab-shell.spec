@@ -83,15 +83,15 @@ chmod g+s %{repodir}/repositories/
 exit 0
 
 
-%postun
-if getent passwd gitlab >/dev/null 2>&1; then
-  userdel gitlab >/dev/null 2>&1
-  rm -r %{homedir}
-fi
-if getent group gitlab >/dev/null 2>&1; then
-  groupdel gitlab >/dev/null 2>&1
-fi
-exit 0
+#%postun
+#if getent passwd gitlab >/dev/null 2>&1; then
+#  userdel gitlab >/dev/null 2>&1
+#  rm -r %{homedir}
+#fi
+#if getent group gitlab >/dev/null 2>&1; then
+#  groupdel gitlab >/dev/null 2>&1
+#fi
+#exit 0
 
 %files
 #%defattr(-,gitlab,gitlab,-)
@@ -105,12 +105,12 @@ exit 0
 %{repodir}/.ssh/authorized_keys
 # /usr/share/gitlab
 %dir %{homedir}
+%dir %{homedir}/%{name}/bin/
+%dir %{homedir}/%{name}/lib/
+%dir %{homedir}/%{name}/hooks/
+%dir %{homedir}/%{name}/support/
 %doc %{homedir}/%{name}/LICENSE
-%{homedir}/%{name}/bin/
 %{homedir}/%{name}/config.yml
-%{homedir}/%{name}/hooks/
-%{homedir}/%{name}/lib/
-%{homedir}/%{name}/support/
 
 %files doc
 %doc %{homedir}/%{name}/README.md
