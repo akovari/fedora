@@ -1,23 +1,25 @@
 %global apprundir %{_var}/run/%{name}
-%global homedir %{_datadir}/%{name}
-%global repodir %{_sharedstatedir}/%{name}
-%global confdir %{_sysconfdir}/%{name}
+%global homedir   %{_datadir}/%{name}
+%global repodir   %{_sharedstatedir}/%{name}
+%global confdir   %{_sysconfdir}/%{name}
+%global logdir    %{_localstatedir}/log/%{name}
 
 Summary: Self hosted Git management software
 Name: gitlab
 Version: 6.0.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 Group: Applications/Internet
 License: MIT
 URL: http://www.gitlab.org
 Source0: https://github.com/gitlabhq/gitlabhq/archive/v%{version}.tar.gz
 Source1: gitlab-sidekiq.service
 Source2: gitlab-unicorn.service
+Patch0: gitlab-6.0.2.change-versions-in-gemfile.patch
+Patch1: gitlab-6.0.2.change-versions-in-gemfile.lock.patch
 BuildArch: noarch
 Provides: gitlab = %{version}-%{release}
 
 Requires: ruby(release)
-Requires: ruby(rubygems)
 Requires: systemd-units
 
 # regular packages
@@ -110,6 +112,9 @@ BuildRequires: ruby-devel
 BuildRequires: ruby
 BuildRequires: systemd-units
 
+# Filter /usr/bin/env/ from RPM's autorequires.
+%global __requires_exclude ^/usr/bin/env$
+
 %description
 Self hosted Git management software
 
@@ -123,7 +128,10 @@ BuildArch: noarch
 Documentation for %{name}
 
 %prep
-%setup -q -T -D -n gitlabhq-%{version}
+%setup -q -n gitlabhq-%{version}
+
+%patch0
+%patch1
 
 %build
 
@@ -136,12 +144,15 @@ install -d -m0755 %{buildroot}%{homedir}/%{name}/tmp/pids
 install -d -m0755 %{buildroot}%{homedir}/%{name}/tmp/sockets
 install -d -m0755 %{buildroot}%{homedir}/%{name}/log/
 install -d -m0755 %{buildroot}%{homedir}/%{name}/public/uploads/
+install -d -m0755 %{buildroot}%{confdir}
+install -d -m0755 %{buildroot}%{logdir}
+install -d -m0755 %{buildroot}%{apprundir}
 
 # Fix permissions
 chmod -R u+rwX %{buildroot}%{homedir}/%{name}/{tmp,log}
 chmod -R u+rwX %{buildroot}%{homedir}/%{name}/public/uploads
 
-# Configure Git global settings for gitlab user, useful when editing via web
+# Configure Git global settings for gitlab user, useful when editing via web ui
 cat > %{buildroot}%{homedir}/.gitconfig << EOF
 [user]
   name "GitLab"
@@ -159,10 +170,14 @@ install -Dm644 %{buildroot}%{homedir}/%{name}/config/database.yml.mysql %{buildr
 # For postrges
 #install -Dm644 %{buildroot}%{homedir}/%{name}/config/database.yml.postgresql %{confdir}/database.yml
 
-# Copy unicorn.rb config to /etc/gitlab/
-install -Dm644 %{buildroot}%{homedir}/%{name}/config/unicorn.rb.example %{buildroot}%{confdir}/unicorn.rb
+# Change pid/log paths in unicorn.rb and copy config to /etc/gitlab/
+sed -e "s|working_directory \"/home/git/gitlab\"|working_directory \"/usr/share/gitlab/gitlab\"|" \
+    -e "s|\"/home/git/gitlab/tmp/sockets/gitlab.socket\"|\"/var/run/gitlab/gitlab.socket\"|" \
+    -e "s|\"/home/git/gitlab/tmp/pids/unicorn.pid\"|\"/var/run/gitlab/unicorn.pid\"|" \
+    -e "s|/home/git/gitlab/log|/var/log/gitlab|g" \
+    config/unicorn.rb.example > %{buildroot}%{confdir}/unicorn.rb
 
-# Change paths in gitlab.yml and copy to /et/gitlab/
+# Change paths in gitlab.yml and copy config to /etc/gitlab/
 sed -e "s|# user: git|user: gitlab|" \
     -e "s|/home/git/repositories|%{repodir}/repositories|" \
     -e "s|/home/git/gitlab-satellites|%{repodir}/satellites|" \
@@ -171,7 +186,7 @@ sed -e "s|# user: git|user: gitlab|" \
 
 # Make symlinks to gitlab app root dir
 for conf in gitlab.yml database.yml unicorn.rb; do
-  ln -s %{confdir}/$conf %{buildroot}%{homedir}/%{name}/config/
+  ln -svf %{confdir}/$conf %{buildroot}%{homedir}/%{name}/config/
 done
 
 # systemd files
@@ -190,7 +205,10 @@ sed -i '1 d' %{buildroot}%{homedir}/%{name}/Rakefile
 systemctl --system daemon-reload
 
 %files
+%dir %{homedir}/
 %dir %{homedir}/%{name}
+%dir %{confdir}
+%dir %{logdir}
 %config(noreplace) %{confdir}/gitlab.yml
 %config(noreplace) %{confdir}/database.yml
 %config(noreplace) %{confdir}/unicorn.rb
@@ -213,10 +231,9 @@ systemctl --system daemon-reload
 %{homedir}/%{name}/Gemfile.lock
 %{homedir}/%{name}/Rakefile
 %exclude %{homedir}/%{name}/.*
-%exclude %{homedir}/%{name}/*.list
 %exclude %{homedir}/%{name}/Guardfile
 %exclude %{homedir}/%{name}/Procfile
-# We don't need the init script
+# We don't need the init script. systemd baby!
 %exclude %{homedir}/%{name}/lib/support/init.d/
 
 %files doc
@@ -230,5 +247,13 @@ systemctl --system daemon-reload
 %doc %{homedir}/%{name}/README.md
 
 %changelog
+* Sat Sep 21 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 6.0.2-2
+- Add new dir: /var/log/gitlab/
+- Replace pid/log/socket paths in unicorn.rb
+- Filter /usr/bin/env/ from RPM's autorequires
+- gitlab-unicorn.service updated with the new paths
+- gitlab-sidekiq.service updated with the new paths
+- Add patches for Gemfile and Gemfile.lock
+
 * Sat Sep 14 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 6.0.2-1
 - Initial package

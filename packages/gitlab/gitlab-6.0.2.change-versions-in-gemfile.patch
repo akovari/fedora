@@ -1,0 +1,88 @@
+--- Gemfile.orig	2013-09-21 15:07:40.666000000 +0300
++++ Gemfile	2013-09-21 15:08:05.895000000 +0300
+@@ -41,7 +41,7 @@
+ gem "github-linguist", require: "linguist"
+ 
+ # API
+-gem "grape", "~> 0.4.1"
++gem "grape", "~> 0.5.0"
+ gem "grape-entity", "~> 0.3.0"
+ 
+ # Format dates and times
+@@ -70,7 +70,7 @@
+ gem "seed-fu"
+ 
+ # Markdown to HTML
+-gem "redcarpet",     "~> 2.2.2"
++gem "redcarpet",     "~> 2.1.1"
+ gem "github-markup", "~> 0.7.4", require: 'github/markup'
+ 
+ # Asciidoc to HTML
+@@ -91,7 +91,7 @@
+ gem 'sidekiq'
+ 
+ # HTTP requests
+-gem "httparty"
++gem "httparty", "0.10.2" 
+ 
+ # Colored output to console
+ gem "colored"
+@@ -106,16 +106,16 @@
+ gem "redis-rails"
+ 
+ # Campfire integration
+-gem 'tinder', '~> 1.9.2'
++#gem 'tinder', '~> 1.9.2'
+ 
+ # HipChat integration
+-gem "hipchat", "~> 0.9.0"
++gem "hipchat", "~> 0.11.0"
+ 
+ # d3
+-gem "d3_rails", "~> 3.1.4"
++gem "d3_rails", ">= 3.1.4"
+ 
+ # underscore-rails
+-gem "underscore-rails", "~> 1.4.4"
++gem "underscore-rails", "~> 1.5.1"
+ 
+ # Sanitize user input
+ gem "sanitize"
+@@ -124,17 +124,17 @@
+   gem "sass-rails"
+   gem "coffee-rails"
+   gem "uglifier"
+-  gem "therubyracer"
++  gem "therubyracer", "0.11.0"
+   gem 'turbolinks'
+   gem 'jquery-turbolinks'
+ 
+   gem 'chosen-rails',     "1.0.0"
+   gem 'select2-rails'
+-  gem 'jquery-atwho-rails', "0.3.0"
+-  gem "jquery-rails",     "2.1.3"
++  gem 'jquery-atwho-rails', "0.3.1"
++  gem "jquery-rails",     "3.0.4"
+   gem "jquery-ui-rails",  "2.0.2"
+   gem "modernizr",        "2.6.2"
+-  gem "raphael-rails",    git: "https://github.com/gitlabhq/raphael-rails.git"
++  gem "raphael-rails"
+   gem 'bootstrap-sass'
+   gem "font-awesome-rails"
+   gem "gemoji", "~> 1.2.1", require: 'emoji/railtie'
+@@ -142,7 +142,7 @@
+ end
+ 
+ group :development do
+-  gem "annotate", git: "https://github.com/ctran/annotate_models.git"
++  gem "annotate"
+   gem "letter_opener"
+   gem 'quiet_assets', '~> 1.0.1'
+   gem 'rack-mini-profiler'
+@@ -201,6 +201,3 @@
+   gem 'test_after_commit'
+ end
+ 
+-group :production do
+-  gem "gitlab_meta", '6.0'
+-end
