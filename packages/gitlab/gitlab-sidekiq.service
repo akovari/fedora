@@ -16,4 +16,4 @@ PIDFile=/var/run/gitlab/sidekiq.pid
 ExecStart=/usr/bin/sidekiq -q post_receive,mailer,system_hook,project_web_hook,gitlab_shell,common,default -e production -d -P /var/run/gitlab/sidekiq.pid -L /usr/share/gitlab/gitlab/log/sidekiq.log
 
 [Install]
-WantedBy=gitlab.target
+WantedBy=multi-user.target
