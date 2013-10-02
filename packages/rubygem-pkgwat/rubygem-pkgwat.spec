@@ -1,16 +1,13 @@
 %global gem_name pkgwat
 
 Name: rubygem-%{gem_name}
-Version: 0.1.3
-Release: 2%{?dist}
+Version: 0.1.4
+Release: 1%{?dist}
 Summary: pkgwat checks your gems to against Fedora/EPEL
 Group: Development/Languages
 License: MIT
 URL: https://github.com/daviddavis/pkgwat
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
-# Remove hard dependency on debugger gem.
-# https://github.com/daviddavis/pkgwat/pull/16
-Patch0: rubygem-pkgwat-0.1.3-debugger.patch
 Requires: ruby(release)
 Requires: ruby(rubygems) 
 Requires: rubygem(nokogiri) => 1.4
@@ -22,7 +19,6 @@ Requires: rubygem(json) < 2
 Requires: rubygem(sanitize) 
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel 
-BuildRequires: ruby 
 BuildRequires: rubygem(minitest)
 BuildRequires: rubygem(vcr)
 BuildRequires: rubygem(webmock)
@@ -54,14 +50,11 @@ gem unpack %{SOURCE0}
 
 gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 
-# Remove hard dependency on debugger gem
-%patch0 -p1
-
 %build
 # Create the gem as gem install only works on a gem file
 gem build %{gem_name}.gemspec
 
-# %%gem_install compiles any C extensions and installs the gem into ./%gem_dir
+# %%gem_install compiles any C extensions and installs the gem into ./%%gem_dir
 # by default, so that we can move it into the buildroot in %%install
 %gem_install
 
@@ -96,6 +89,12 @@ popd
 %{gem_instdir}/test
 
 %changelog
+* Wed Oct 02 2013 Ken Dreyer <ktdreyer@ktdreyer.com> - 0.1.4-1
+- Update to 0.1.4
+- Drop upstreamed debugger gem patch
+- Drop BR: ruby, since BR: ruby(release) provides the same thing
+- Fix gem_dir macro in comment to satisfy rpmlint
+
 * Thu Sep 12 2013 Ken Dreyer <ktdreyer@ktdreyer.com> - 0.1.3-2
 - rubygem-sanitize is now in Fedora. Enable it in the BR.
 - Patch to remove hard dep on debugger gem
