@@ -1,4 +1,3 @@
-# Generated from pkgwat-0.1.0.gem by gem2rpm -*- rpm-spec -*-
 %global gem_name pkgwat
 
 Name: rubygem-%{gem_name}
