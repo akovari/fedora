@@ -9,16 +9,16 @@ License: MIT
 URL: https://github.com/daviddavis/pkgwat
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
-Requires: ruby(rubygems) 
+Requires: ruby(rubygems)
 Requires: rubygem(nokogiri) => 1.4
 Requires: rubygem(nokogiri) < 2
-Requires: rubygem(rake) 
-Requires: rubygem(thor) 
+Requires: rubygem(rake)
+Requires: rubygem(thor)
 Requires: rubygem(json) => 1.4
 Requires: rubygem(json) < 2
-Requires: rubygem(sanitize) 
+Requires: rubygem(sanitize)
 BuildRequires: ruby(release)
-BuildRequires: rubygems-devel 
+BuildRequires: rubygems-devel
 BuildRequires: rubygem(minitest)
 BuildRequires: rubygem(vcr)
 BuildRequires: rubygem(webmock)
