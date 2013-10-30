@@ -2,7 +2,7 @@
 
 Name: rubygem-%{gem_name}
 Version: 0.1.4
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: pkgwat checks your gems to against Fedora/EPEL
 Group: Development/Languages
 License: MIT
@@ -50,18 +50,20 @@ gem unpack %{SOURCE0}
 
 gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 
+# remove some unecessary files
+rm Gemfile
+rm Rakefile
+sed -i 's|"Gemfile",||' %{gem_name}.gemspec
+sed -i 's|"Rakefile",||' %{gem_name}.gemspec
+
 %build
 # Create the gem as gem install only works on a gem file
 gem build %{gem_name}.gemspec
 
-# %%gem_install compiles any C extensions and installs the gem into ./%%gem_dir
-# by default, so that we can move it into the buildroot in %%install
 %gem_install
 
-# remove some unecessary files
-pushd .%{gem_instdir}
-rm Gemfile
-rm %{gem_name}.gemspec
+# remove unecessary gemspec
+rm .%{gem_instdir}/%{gem_name}.gemspec
 
 %install
 mkdir -p %{buildroot}%{gem_dir}
@@ -77,6 +79,7 @@ popd
 %files
 %dir %{gem_instdir}
 %doc %{gem_instdir}/LICENSE
+%doc %{gem_instdir}/README.md
 %exclude %{gem_instdir}/.*
 %{gem_libdir}
 %exclude %{gem_cache}
@@ -84,11 +87,15 @@ popd
 
 %files doc
 %doc %{gem_docdir}
-%doc %{gem_instdir}/README.md
-%{gem_instdir}/Rakefile
-%{gem_instdir}/test
+%exclude %{gem_instdir}/test
 
 %changelog
+* Tue Oct 29 2013 Ken Dreyer <ktdreyer@ktdreyer.com> - 0.1.4-2
+- Remove Gemfile and Rakefile in %%prep
+- Delete extraneous boilerplate comment about C extensions
+- Move README.md to main package
+- Exclude test suite and Rakefile from binary packages
+
 * Wed Oct 02 2013 Ken Dreyer <ktdreyer@ktdreyer.com> - 0.1.4-1
 - Update to 0.1.4
 - Drop upstreamed debugger gem patch
