@@ -2,8 +2,8 @@
 
 Name: rubygem-%{gem_name}
 Version: 0.1.4
-Release: 2%{?dist}
-Summary: pkgwat checks your gems to against Fedora/EPEL
+Release: 3%{?dist}
+Summary: Check your gems against Fedora/EPEL
 Group: Development/Languages
 License: MIT
 URL: https://github.com/daviddavis/pkgwat
@@ -30,8 +30,7 @@ Provides: rubygem(%{gem_name}) = %{version}
 
 %description
 pkgwat checks your Gemfile.lock to make sure all your gems
-are packaged in Fedora/EPEL. Eventually we hope to support
-Gemfiles and bundle list as well.
+are packaged in Fedora/EPEL.
 
 
 %package doc
@@ -90,6 +89,9 @@ popd
 %exclude %{gem_instdir}/test
 
 %changelog
+* Wed Oct 30 2013 Ken Dreyer <ktdreyer@ktdreyer.com> - 0.1.4-3
+- Clean up Summary and Description
+
 * Tue Oct 29 2013 Ken Dreyer <ktdreyer@ktdreyer.com> - 0.1.4-2
 - Remove Gemfile and Rakefile in %%prep
 - Delete extraneous boilerplate comment about C extensions
