@@ -2,7 +2,7 @@
 
 Name: rubygem-%{gem_name}
 Version: 0.1.4
-Release: 3%{?dist}
+Release: 4%{?dist}
 Summary: Check your gems against Fedora/EPEL
 Group: Development/Languages
 License: MIT
@@ -13,7 +13,6 @@ Requires: ruby(rubygems)
 Requires: rubygem(nokogiri) => 1.4
 Requires: rubygem(nokogiri) < 2
 Requires: rubygem(rake)
-Requires: rubygem(thor)
 Requires: rubygem(json) => 1.4
 Requires: rubygem(json) < 2
 Requires: rubygem(sanitize)
@@ -89,6 +88,9 @@ popd
 %exclude %{gem_instdir}/test
 
 %changelog
+* Mon Nov 04 2013 Ken Dreyer <ktdreyer@ktdreyer.com> - 0.1.4-4
+- Remove thor requirement
+
 * Wed Oct 30 2013 Ken Dreyer <ktdreyer@ktdreyer.com> - 0.1.4-3
 - Clean up Summary and Description
 
