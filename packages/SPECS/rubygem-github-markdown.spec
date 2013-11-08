@@ -2,7 +2,7 @@
 %global gem_name github-markdown
 
 Name: rubygem-%{gem_name}
-Version: 0.5.3
+Version: 0.6.3
 Release: 1%{?dist}
 Summary: The Markdown parser for GitHub.com
 Group: Development/Languages
@@ -10,10 +10,10 @@ License: MIT
 URL: http://github.github.com/github-flavored-markdown/
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
-Requires: ruby(rubygems) 
+Requires: ruby(rubygems)
 BuildRequires: ruby(release)
-BuildRequires: rubygems-devel 
-BuildRequires: ruby-devel 
+BuildRequires: rubygems-devel
+BuildRequires: ruby-devel
 Provides: rubygem(%{gem_name}) = %{version}
 
 %description
@@ -62,7 +62,7 @@ rm -rf %{buildroot}%{gem_instdir}/ext/
 
 %check
 pushd .%{gem_instdir}
-#testrb -Ilib test/gfm_test.rb
+testrb -Ilib test/gfm_test.rb
 popd
 
 %files
@@ -81,5 +81,9 @@ popd
 %{gem_instdir}/test/
 
 %changelog
+* Fri Nov 08 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.6.3-1
+- Update to 0.6.3
+- Tests now pass
+
 * Fri Aug 09 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 0.5.3-1
 - Initial package
