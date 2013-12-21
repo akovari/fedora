@@ -1,0 +1,20 @@
+--- specifications/gitlab-gollum-lib-1.0.1.gemspec.old	2013-09-04 20:52:26.797000000 +0300
++++ specifications/gitlab-gollum-lib-1.0.1.gemspec	2013-09-04 21:05:18.801000000 +0300
+@@ -44,7 +44,7 @@ Gem::Specification.new do |s|
+       s.add_dependency(%q<gitlab-grit>, [">= 2.5.1"])
+       s.add_dependency(%q<github-markup>, ["< 1.0.0", ">= 0.7.5"])
+       s.add_dependency(%q<github-markdown>, ["~> 0.5.3"])
+-      s.add_dependency(%q<pygments.rb>, ["~> 0.4.2"])
++      s.add_dependency(%q<pygments.rb>, ["~> 0.5.2"])
+       s.add_dependency(%q<sanitize>, ["~> 2.0.3"])
+       s.add_dependency(%q<nokogiri>, ["~> 1.5.9"])
+       s.add_dependency(%q<stringex>, ["~> 1.5.1"])
+@@ -63,7 +63,7 @@ Gem::Specification.new do |s|
+     s.add_dependency(%q<gitlab-grit>, [">= 2.5.1"])
+     s.add_dependency(%q<github-markup>, ["< 1.0.0", ">= 0.7.5"])
+     s.add_dependency(%q<github-markdown>, ["~> 0.5.3"])
+-    s.add_dependency(%q<pygments.rb>, ["~> 0.4.2"])
++    s.add_dependency(%q<pygments.rb>, ["~> 0.5.2"])
+     s.add_dependency(%q<sanitize>, ["~> 2.0.3"])
+     s.add_dependency(%q<nokogiri>, ["~> 1.5.9"])
+     s.add_dependency(%q<stringex>, ["~> 1.5.1"])

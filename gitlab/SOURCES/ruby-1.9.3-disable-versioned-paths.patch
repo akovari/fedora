@@ -1,0 +1,22 @@
+From fa1a50ad10814f724b8713865dc222724cb955ab Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?V=C3=ADt=20Ondruch?= <vondruch@redhat.com>
+Date: Thu, 25 Aug 2011 14:33:51 +0200
+Subject: [PATCH] Allow to disable versioned paths.
+
+diff --git a/lib/rdoc/ri/paths.rb b/lib/rdoc/ri/paths.rb
+index a3c65bf..0575730 100644
+--- a/lib/rdoc/ri/paths.rb
++++ b/lib/rdoc/ri/paths.rb
+@@ -11,9 +11,9 @@ module RDoc::RI::Paths
+   version = RbConfig::CONFIG['ruby_version']
+ 
+   base    = if RbConfig::CONFIG.key? 'ridir' then
+-              File.join RbConfig::CONFIG['ridir'], version
++              File.join [RbConfig::CONFIG['ridir'], RbConfig::CONFIG['USE_VERSIONED_PATHS'] == 'YES' ? version : nil].compact
+             else
+-              File.join RbConfig::CONFIG['datadir'], 'ri', version
++              File.join [RbConfig::CONFIG['datadir'], 'ri', RbConfig::CONFIG['USE_VERSIONED_PATHS'] == 'YES' ? version : nil].compact
+             end
+ 
+   SYSDIR  = File.join base, "system"
+

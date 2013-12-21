@@ -1,0 +1,20 @@
+--- specifications/gitlab-gollum-lib-1.0.1.gemspec.old	2013-09-04 20:52:26.797000000 +0300
++++ specifications/gitlab-gollum-lib-1.0.1.gemspec	2013-09-04 21:02:13.220000000 +0300
+@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
+       s.add_runtime_dependency(%q<pygments.rb>, ["~> 0.4.2"])
+       s.add_runtime_dependency(%q<sanitize>, ["~> 2.0.3"])
+       s.add_runtime_dependency(%q<nokogiri>, ["~> 1.5.9"])
+-      s.add_runtime_dependency(%q<stringex>, ["~> 1.5.1"])
++      s.add_runtime_dependency(%q<stringex>, ["~> 2.0.3"])
+       s.add_development_dependency(%q<RedCloth>, ["~> 4.2.9"])
+       s.add_development_dependency(%q<mocha>, ["~> 0.13.2"])
+       s.add_development_dependency(%q<org-ruby>, ["~> 0.8.1"])
+@@ -66,7 +66,7 @@ Gem::Specification.new do |s|
+     s.add_dependency(%q<pygments.rb>, ["~> 0.4.2"])
+     s.add_dependency(%q<sanitize>, ["~> 2.0.3"])
+     s.add_dependency(%q<nokogiri>, ["~> 1.5.9"])
+-    s.add_dependency(%q<stringex>, ["~> 1.5.1"])
++    s.add_dependency(%q<stringex>, ["~> 2.0.3"])
+     s.add_dependency(%q<RedCloth>, ["~> 4.2.9"])
+     s.add_dependency(%q<mocha>, ["~> 0.13.2"])
+     s.add_dependency(%q<org-ruby>, ["~> 0.8.1"])

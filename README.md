@@ -1,1 +1,1 @@
-Stuff for Fedora.
+Keeping track of my Fedora specfiles.

@@ -1,8 +1,0 @@
-rpmlint ../SRPMS/rubygem-redis-3.0.4-1.fc19.src.rpm ../RPMS/noarch/rubygem-redis-3.0.4-1.fc19.noarch.rpm 
-
-rubygem-redis.src: W: spelling-error %description -l en_US sharding -> sharing, shading, sharping
-rubygem-redis.src: W: spelling-error %description -l en_US pipelining -> pipe lining, pipe-lining, pipeline
-rubygem-redis.noarch: W: spelling-error %description -l en_US sharding -> sharing, shading, sharping
-rubygem-redis.noarch: W: spelling-error %description -l en_US pipelining -> pipe lining, pipe-lining, pipeline
-2 packages and 0 specfiles checked; 0 errors, 4 warnings.
-
