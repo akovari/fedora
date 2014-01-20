@@ -2,19 +2,20 @@
 %global gem_name timers
 
 Name: rubygem-%{gem_name}
-Version: 1.1.0
-Release: 2%{?dist}
+Version: 2.0.0
+Release: %{?dist}
 Summary: Pure Ruby one-shot and periodic timers
 Group: Development/Languages
 License: MIT
 URL: https://github.com/celluloid/timers
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Requires: ruby(release)
-Requires: ruby(rubygems) 
+Requires: rubygems
+Requires: rubygem(hitimes)
 BuildRequires: ruby(release)
-BuildRequires: rubygems-devel 
-BuildRequires: ruby 
-BuildRequires: rubygem(rspec) 
+BuildRequires: rubygems-devel
+BuildRequires: ruby
+BuildRequires: rubygem(rspec)
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
@@ -41,8 +42,6 @@ gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 # Create the gem as gem install only works on a gem file
 gem build %{gem_name}.gemspec
 
-# %%gem_install compiles any C extensions and installs the gem into ./%%gem_dir
-# by default, so that we can move it into the buildroot in %%install
 %gem_install
 
 %install
@@ -79,6 +78,10 @@ popd
 %{gem_instdir}/%{gem_name}.gemspec
 
 %changelog
+* Mon Jan 20 2014 Achilleas Pipinellis <axilleaspi@ymail.com> - 2.0.0-1
+- Bump version
+- Clean up spec
+
 * Mon Jun 03 2013 Axilleas Pipinellis <axilleaspi@ymail.com> - 1.1.0-2
 - Fix Summary/Description tags
 
